@@ -1,0 +1,48 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(BorderOnlyDesignApp());
+
+class BorderOnlyDesignApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Border Only Design'),
+          backgroundColor: Colors.deepPurple,
+        ),
+        body: Center(
+          child: ContainerWithBorder(),
+        ),
+      ),
+    );
+  }
+}
+
+class ContainerWithBorder extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 320,
+      height: 240,
+      decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.greenAccent, // Border color
+          width: 5, // Border width
+        ),
+        borderRadius: BorderRadius.circular(15), // Rounded corners
+      ),
+      child: Center(
+        child: Text(
+          'Border Only Design',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+      ),
+    );
+  }
+}
