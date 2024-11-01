@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Gradient Designs")),
+        body: Center(
+          child: Container(
+            width: 300,
+            height: 300,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.blue, Colors.purple],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Center(
+              child: Text(
+                'Linear Gradient',
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: Text("Gradient Designs")),
+        body: Center(
+         child: AngularGradientExample(),
+        ),
+      ),
+    );
+  }
+}
+
+class AngularGradientExample extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      height: 300,
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [Colors.cyan, Colors.teal, Colors.greenAccent],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          tileMode: TileMode.clamp,
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Center(
+        child: Text(
+          'Angular Gradient',
+          style: TextStyle(color: Colors.white, fontSize: 20),
+        ),
+      ),
+    );
+  }
+}
