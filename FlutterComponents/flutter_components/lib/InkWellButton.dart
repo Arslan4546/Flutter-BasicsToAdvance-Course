@@ -1,28 +1,24 @@
 import 'package:flutter/material.dart';
 
 class Inkwellbutton extends StatelessWidget {
-  const Inkwellbutton({super.key});
+  final Widget child;
+  final VoidCallback onPressed;
+  const Inkwellbutton({super.key,required this.onPressed,required this.child});
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return Material(
+      elevation: 20,
+      borderRadius: BorderRadius.circular(20),
 
       child: InkWell(
-
-        onTap: (){
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Center(
-                child: Text("You are Clicking This Button",style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-
-                    fontWeight: FontWeight.bold
-                ),),
-              ),backgroundColor: Colors.blue,
-              )
-          );
-        },
-        child: Container(child: Text("Click")),
+        hoverColor: Colors.blue.shade100,
+        borderRadius: BorderRadius.circular(20),
+        onTap: onPressed,
+        child:child
       ),
     );
   }

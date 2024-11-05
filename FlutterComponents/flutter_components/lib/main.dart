@@ -41,14 +41,69 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Center(
+      body:  Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            Elevatedbutton(),
+            Elevatedbutton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Center(
+                      child: Text("You are Clicking This Button",style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
 
-            Gesturebutton(),
-            Inkwellbutton(),
+                          fontWeight: FontWeight.bold
+                      ),),
+                    ),backgroundColor: Colors.blue,
+                    )
+                );
+              }, child: const Text("Click!")),
+            Gesturebutton(
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(50),
+                    boxShadow: const [
+                      const BoxShadow(
+                          offset: Offset(3, 3),
+                          color: Colors.black
+                      ),
+
+                    ]
+                ),
+                child: const Text("Click!"),
+              ),
+              onPressed: (){
+
+                ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(content: Center(
+                      child: Text("You are Clicking This Button",style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+
+                          fontWeight: FontWeight.bold
+                      ),),
+                    ),backgroundColor: Colors.blue,
+                    )
+                );
+              },
+            ),
+            Inkwellbutton(child:  const Text("Click"),
+                onPressed: (){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Center(
+                        child: Text("You are Clicking This Button",style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+
+                          fontWeight: FontWeight.bold,
+                        ),),
+                      ),backgroundColor: Colors.blue,
+                      )
+                  );
+                },),
 
           ],
         ),
