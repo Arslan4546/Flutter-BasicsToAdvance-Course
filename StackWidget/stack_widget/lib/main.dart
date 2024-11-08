@@ -50,12 +50,12 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 80,),
+                const SizedBox(height: 230,),
                 Padding(
                   padding:const EdgeInsets.only(left: 20,right: 20),
                   child: Container(
                     width: double.infinity,
-                    height: 70,
+                    height: 60,
                     decoration: BoxDecoration(
                         boxShadow: [
                           const BoxShadow(
@@ -92,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding:const EdgeInsets.only(left: 20,right: 20),
                   child: Container(
                     width: double.infinity,
-                    height: 70,
+                    height: 60,
                     decoration: BoxDecoration(
                         boxShadow: [
                           const BoxShadow(
@@ -118,7 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text("Enter your Name")
+                          Text("Enter your Email")
                         ],
                       ),
                     ),
@@ -130,7 +130,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding:const EdgeInsets.only(left: 20,right: 20),
                   child: Container(
                     width: double.infinity,
-                    height: 70,
+                    height: 60,
                     decoration: BoxDecoration(
                         boxShadow: [
                           const BoxShadow(
@@ -156,7 +156,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text("Enter your Name")
+                          Text("Enter Your Password")
                         ],
                       ),
                     ),
@@ -167,7 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   padding:const EdgeInsets.only(left: 20,right: 20),
                   child: Container(
                     width: double.infinity,
-                    height: 70,
+                    height: 60,
                     decoration: BoxDecoration(
                         boxShadow: [
                           const BoxShadow(
@@ -193,19 +193,19 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text("Enter your Name")
+                          Text("Re-Type Password")
                         ],
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 20,),
+
                 Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: Container(
                     margin: const EdgeInsets.only(top: 30),
                     width: double.infinity,
-                    height:70,
+                    height:60,
                     decoration: BoxDecoration(
                         gradient: const LinearGradient(colors: [
                           Colors.black,
@@ -216,14 +216,14 @@ class _MyHomePageState extends State<MyHomePage> {
                         ],
                             begin: Alignment.topRight,
                             end: Alignment.bottomLeft),
-                        boxShadow: [
-                          const BoxShadow(
+                        boxShadow:const  [
+                           BoxShadow(
                             offset: Offset(2, 2),
                             blurRadius: 3,
                             spreadRadius: 3,
                             color: Colors.black,
                           ),
-                          const BoxShadow(
+                           BoxShadow(
                             offset: Offset(-2, -2),
                             blurRadius: 1,
                             spreadRadius: 1,
@@ -232,36 +232,188 @@ class _MyHomePageState extends State<MyHomePage> {
                         ],
                         color: const Color(0xFF836FE7),
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: Colors.grey,
+                        border: Border.all(color: Colors.white70,
+                          width: 2,
+
                         )
                     ),
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Register",style: TextStyle(
+                        Text("Sign Up",style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 22,
+
                         ),)
                       ],
                     ),
                   ),
                 ),
-                 const Padding(
-                  padding: EdgeInsets.only(right: 20.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text("Already Have An Account? "),
-                      Text("Login",style: TextStyle(color:Colors.black,
+               const SizedBox(height: 30,),
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
 
-                      fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
-                      ),)
+                  child: const Row(
+                    children: [
+                      Flexible(
+                        child: Divider(
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(" Or ",style: TextStyle(
+                        color: Colors.black,
+                      ),),
+                      Flexible(
+                        child: Divider(
+                          color: Colors.black,
+
+                        ),
+                      )
                     ],
                   ),
-                )
+                ),
+                const SizedBox(height: 30,),
 
+                GestureDetector(
+                  onTap: (){
+
+                  },
+                  child: Container(
+                    height: 40,
+                    width: double.infinity,
+                    margin: const EdgeInsets.symmetric(horizontal: 30,),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(color: Colors.black),
+                      boxShadow: [
+                        const BoxShadow(
+                          offset: Offset(-2,-2),
+                          // blurRadius: 1,
+                          // spreadRadius: 1,
+                          color: Colors.black,
+                        ),
+                        const BoxShadow(
+                          offset: Offset(2, 1),
+                          // blurRadius: 1,
+                          // spreadRadius: 1,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 20,
+                          width: 20,
+
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/facebook.png"
+                                ),
+                                fit: BoxFit.cover,
+                              )
+                          ),
+                        ),
+                        const SizedBox(width: 10,),
+                        const Text("Continue With Facebook",style: TextStyle(
+                          fontFamily: "fontMain1",
+                          fontSize: 12,
+
+                        ),)
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10,),
+
+                GestureDetector(
+                  onTap: (){
+
+                  },
+                  child: Container(
+
+                    height: 40,
+                    width: double.infinity,
+                    margin: const EdgeInsets.symmetric(horizontal: 30,),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(color: Colors.black),
+                      boxShadow: [
+                        const BoxShadow(
+                          offset: Offset(-2,-2),
+                          // blurRadius: 1,
+                          // spreadRadius: 1,
+                          color: Colors.black,
+                        ),
+                        const BoxShadow(
+                          offset: Offset(2, 1),
+                          // blurRadius: 1,
+                          // spreadRadius: 1,
+                          color: Colors.white,
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 20,
+                          width: 20,
+
+                          decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/images/google.png"
+                                ),
+                                fit: BoxFit.cover,
+                              )
+                          ),
+                        ),
+                        const SizedBox(width: 10,),
+                        const Text("Continue With Google",style: TextStyle(
+
+                          fontSize: 12,
+
+                        ),)
+                      ],
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 30,),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      child: const Center(
+                        child: Text("Already Have An Account?",style: TextStyle(
+                            color: Colors.black
+                        ),),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 10),
+                      child:  Center(
+                        child: GestureDetector(
+                          onTap: (){
+
+                          },
+                          child: const Text(" Login",style: TextStyle(
+                              fontWeight: FontWeight.bold,
+
+                          ),),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
 
               ],
             ),
@@ -270,13 +422,14 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
               height: 200,
             width: double.infinity,
-            decoration:  const BoxDecoration(
-                color: Color(0xFF836FE7),
-                borderRadius: BorderRadius.only(
+            decoration:   BoxDecoration(
+                color: const Color(0xFF836FE7),
+                border: Border.all(color: Colors.white,width: 2),
+                borderRadius: const BorderRadius.only(
                   bottomLeft:Radius.circular(1500),
 
                 ),
-              boxShadow: [
+              boxShadow:const  [
                 BoxShadow(
                   offset: Offset(3, 3),
                   blurRadius: 3,
@@ -284,13 +437,13 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Colors.black,
                 ),
                 BoxShadow(
-                  offset: Offset(-3, -3),
-                  blurRadius: 3,
-                  spreadRadius: 3,
+                  offset: Offset(3, 3),
+                  blurRadius: 2,
+                  spreadRadius: 2,
                   color: Colors.black,
                 ),
               ],
-              gradient: LinearGradient(colors: [
+              gradient: const LinearGradient(colors: [
                Colors.blueGrey,
                 Colors.black,
 
@@ -309,24 +462,25 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Container(
               height: 120,
               width: 120,
-              decoration:  const BoxDecoration(
+              decoration:   BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.black,
-                boxShadow: [
-                  BoxShadow(
+                border: Border.all(color: Colors.white,width: 4),
+                boxShadow: const [
+                   BoxShadow(
                     offset: Offset(-2, 2),
                     blurRadius: 3,
                     spreadRadius: 3,
                     color: Colors.black,
                   ),
-                  BoxShadow(
+                   BoxShadow(
                     offset: Offset(2, -2),
                     blurRadius: 2,
                     spreadRadius: 2,
-                    color: Colors.white,
+                    color: Colors.black,
                   ),
                 ],
-                image: DecorationImage(image: NetworkImage(scr),
+                image: const DecorationImage(image: NetworkImage(scr),
                   fit: BoxFit.cover,
 
                 ),
@@ -334,6 +488,22 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
+
+          const Positioned(
+              top: 60,
+              left: 160,
+              child: Text("Sign Up",style: TextStyle(color: Colors.white,
+            fontSize: 60,
+                fontWeight: FontWeight.bold,
+                  shadows: [
+                    Shadow(
+                      color: Colors.white,
+                      offset: Offset(-2, 2),
+                      blurRadius: 3,
+
+                    )
+                  ]
+          ),))
           
 
         ],
