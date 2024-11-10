@@ -8,9 +8,15 @@ class Assets {
   static const String images4 = 'assets/images/4.png';
   static const String images5 = 'assets/images/5.png';
   static const String images6 = 'assets/images/6.png';
+  static const String imagesA = 'assets/images/a.png';
   static const String imagesArslan = 'assets/images/arslan.jpg';
   static const String imagesBack = 'assets/images/back.jpg';
+  static const String imagesCofee1 = 'assets/images/cofee1.png';
+  static const String imagesCofee2 = 'assets/images/cofee2.png';
+  static const String imagesCofee3 = 'assets/images/cofee3.png';
+  static const String imagesCoffe4 = 'assets/images/coffe4.png';
   static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesGoogle = 'assets/images/google.png';
+  static const String imagesMan = 'assets/images/man.png';
 
 }
