@@ -124,7 +124,7 @@ class CoffeeOrderPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 const Text(
-                  "In comparison to a café latte, the perfect cappuccino has a more intense coffee flavor, as well as...",
+                  "In comparison to a cafe latte, the perfect cappuccino has a more intense coffee flavor, as well as...",
                   style: TextStyle(color: Colors.grey),
                 ),
 
