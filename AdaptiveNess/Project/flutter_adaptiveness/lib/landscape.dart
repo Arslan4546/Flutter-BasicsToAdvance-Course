@@ -11,24 +11,24 @@ class Landscape extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            height: width * 0.3,
+            width: width * 0.3,
             color: Colors.amber,
           ),
           SizedBox(
-            height: width * 0.7,
+            width: width * 0.7,
             child: Column(
               children: [
                 Container(
                   color: Colors.blue,
-                  width: height * 0.3,
+                  height: height * 0.3,
                 ),
                 Container(
                   color: Colors.greenAccent,
-                  width: height * 0.4,
+                  height: height * 0.4,
                 ),
                 Container(
                   color: Colors.orangeAccent,
-                  width: height * 0.3,
+                  height:height * 0.3,
                 ),
               ],
             ),
