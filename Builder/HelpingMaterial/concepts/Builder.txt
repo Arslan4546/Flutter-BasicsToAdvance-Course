@@ -1,0 +1,12 @@
+Concepts Behind the Builder and Scaffold:
+
+--> Basically jab humm scaffold.of(context) kr k koi bhi cheez use krty hain to ye context halaky apna ancestor mai scaffold ko call krta hai jab k scaffold to khud context mai pra hia to iss wja sy error aa jata hia 
+
+--> iss ka dosra hal ye hia k humain kissi or file mai stl widget  mai of(context) ly k uss ki class ko main UI mai jha dil kry wha use kryn q k jab hi humm stl widget use krty hain to uss mai build ka context atta hia iss wja sy iss error ko humm handle krty hian 
+
+--> q k build ka context apny ancestor mai scaffold ko search krta hai or jo k iss k ancstor mai build ki class hia or build ki class k uper scaffold ka pra hai isi wja sy ye humain uss type ka error ni deta
+
+--> iss lyee hum jha bhi condition ki zaroorat hoti hia to humm  Builder() widget ka use krty hain q k ye ik function ka objecct leta hia or retrun mmai ik widget retrun krta hia iss lyee iss mai conditions lagana thora easy ho jata hia 
+
+--> i think ye concept achy sy tyar ho gya hoga ager ni hua to ik bar or read kryn 
+
