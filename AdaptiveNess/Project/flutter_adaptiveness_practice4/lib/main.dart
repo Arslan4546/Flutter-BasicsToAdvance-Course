@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
 }
 
 class ProfileScreen extends StatefulWidget {
-  const ProfileScreen({super.key, });
-
-
+  const ProfileScreen({
+    super.key,
+  });
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();
@@ -35,15 +35,13 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-
     final orientation = MediaQuery.of(context).orientation;
 
     return Scaffold(
-
       body: Builder(
           builder: (context) => orientation == Orientation.portrait
               ? const Portrait()
-              : const  Landscape()),
+              : const Landscape()),
     );
   }
 }

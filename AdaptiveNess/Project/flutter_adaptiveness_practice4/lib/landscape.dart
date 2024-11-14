@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 
-
-
-
 class Landscape extends StatelessWidget {
   const Landscape({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery
-        .of(context)
-        .size
-        .width;
-    final screenHeight = MediaQuery
-        .of(context)
-        .size
-        .height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
       body: Stack(
@@ -42,10 +33,10 @@ class Landscape extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircleAvatar(
-                      radius: 60,
+                      radius: 100,
                       backgroundColor: Colors.black,
-                      backgroundImage: const AssetImage(
-                          "assets/images/man.png"),
+                      backgroundImage:
+                          const AssetImage("assets/images/man.png"),
                       child: Container(
                         decoration: BoxDecoration(
                           border: Border.all(color: Colors.white, width: 4),
@@ -76,7 +67,7 @@ class Landscape extends StatelessWidget {
               Expanded(
                 flex: 2,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  padding: const EdgeInsets.only(left: 20.0,right: 20,top: 40 ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -92,14 +83,17 @@ class Landscape extends StatelessWidget {
                       _buildSignUpButton(),
                       const SizedBox(height: 30),
                       _buildDividerOr(),
-                      const SizedBox(height: 25),
-                      _buildSocialButton("Continue With Facebook",
-                          "assets/images/facebook.png"),
-                      const SizedBox(height: 10),
-                      _buildSocialButton(
-                          "Continue With Google", "assets/images/google.png"),
-                      const SizedBox(height: 30),
-                      _buildLoginText(),
+                      const SizedBox(height: 60),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Already Have An Account ? ",style: TextStyle(
+                            color: Colors.white,
+
+                          ),),
+                          Text("Login",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                        ],
+                      ),
                     ],
                   ),
                 ),
@@ -147,11 +141,13 @@ class Landscape extends StatelessWidget {
           end: Alignment.bottomLeft,
         ),
         boxShadow: const [
-          BoxShadow(offset: Offset(2, 2),
+          BoxShadow(
+              offset: Offset(2, 2),
               blurRadius: 3,
               spreadRadius: 3,
               color: Colors.black),
-          BoxShadow(offset: Offset(-2, -2),
+          BoxShadow(
+              offset: Offset(-2, -2),
               blurRadius: 1,
               spreadRadius: 1,
               color: Colors.white),
@@ -222,16 +218,15 @@ class Landscape extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
-            "Already Have An Account?", style: TextStyle(color: Colors.white)),
+        const Text("Already Have An Account?",
+            style: TextStyle(color: Colors.white)),
         GestureDetector(
           onTap: () {},
-          child: const Text(" Login", style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold)),
+          child: const Text(" Login",
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
         ),
       ],
     );
   }
-
-
 }

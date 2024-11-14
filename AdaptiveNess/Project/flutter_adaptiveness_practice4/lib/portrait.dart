@@ -113,16 +113,19 @@ class Portrait extends StatelessWidget {
               SizedBox(height: screenHeight * 0.025),
 
               // Social media buttons
-              buildSocialButton("Continue With Facebook", "assets/images/facebook.png", screenWidth),
+              buildSocialButton("Continue With Facebook",
+                  "assets/images/facebook.png", screenWidth),
               SizedBox(height: screenHeight * 0.01),
-              buildSocialButton("Continue With Google", "assets/images/google.png", screenWidth),
+              buildSocialButton("Continue With Google",
+                  "assets/images/google.png", screenWidth),
               SizedBox(height: screenHeight * 0.03),
 
               // Login prompt
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Already Have An Account?", style: TextStyle(color: Colors.white)),
+                  const Text("Already Have An Account?",
+                      style: TextStyle(color: Colors.white)),
                   GestureDetector(
                     onTap: () {},
                     child: const Text(
@@ -140,11 +143,11 @@ class Portrait extends StatelessWidget {
 
           // Profile image and Sign-Up title
           Positioned(
-            top: 70,
-            left: 30,
+            top: screenHeight * 0.07,
+            left: screenWidth * 0.05,
             child: Container(
-              height: screenHeight * 0.15,
-              width: screenHeight * 0.15,
+              height: screenHeight*0.15,
+              width: screenWidth*0.30,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.black,
@@ -171,15 +174,15 @@ class Portrait extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 100,
-            left:200,
-            child: const Text(
+            top: screenHeight*0.08,
+            left: screenWidth*0.4,
+            child:  Text(
               "Sign Up",
               style: TextStyle(
                 color: Colors.white,
-                fontSize: 50,
+                fontSize: screenWidth*0.15,
                 fontWeight: FontWeight.bold,
-                shadows: [
+                shadows:const  [
                   Shadow(
                     color: Colors.white,
                     offset: Offset(-2, 2),
@@ -246,7 +249,8 @@ class Portrait extends StatelessWidget {
               width: 20,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                image: DecorationImage(image: AssetImage(assetPath), fit: BoxFit.cover),
+                image: DecorationImage(
+                    image: AssetImage(assetPath), fit: BoxFit.cover),
               ),
             ),
             const SizedBox(width: 10),
