@@ -96,9 +96,10 @@ class _MyAppScreenState extends State<MyAppScreen> {
             SizedBox(
               width: 300,
               child: TextField(
-
+                autofillHints: ["Arslan " , "Mannan"],
                 controller: userNameController,
                 decoration: InputDecoration(
+
                     prefixIcon: Icon(Icons.start),
                     labelText: "Enter Your Name",
                     border: OutlineInputBorder(
