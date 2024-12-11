@@ -9,82 +9,152 @@ class HorizantalScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
 
-      drawer: Drawer(
-
-
-      ),
-      appBar: AppBar(
-        foregroundColor: Colors.black,
-        backgroundColor: Color(0xffF1B77A),
-        actions: [
-          Padding(
-            padding:  EdgeInsets.all(8.0),
-            child: Icon(Icons.search,),
-          ),
-
-        ],
-      ),
-      body: Column(
-
-              children: [
-                Container(
-
-                  width: double.infinity,
-                  height: Sheight*0.2,
-                  decoration: BoxDecoration(
-                    color: Color(0xffF1B77A),
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(50),
-                      bottomRight: Radius.circular(50),
+      body: Row(
+        children: [
+          Expanded(
+            flex: 3,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xffF1B77A),
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(50),
+                ),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 50, // Adjust size to match landscape proportions
+                    backgroundColor: Colors.blue,
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Arslan Tariq",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
                     ),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                  Text(
+                    "Flutter Developer",
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-
-                              height: Sheight*0.2,
-                              width: Swidth*0.2,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                shape: BoxShape.circle,
-
-
-                              ),
+                      Text(
+                        "My Tasks",
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      CircleAvatar(
+                        backgroundColor: Color(0xff2E7074),
+                        child: Icon(Icons.calendar_month, color: Colors.white),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: 4,
+                    itemBuilder: (context, index) => Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            backgroundColor: Colors.blue,
+                            radius: 15,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            "5 Tasks I Started.",
+                            style: TextStyle(
+                              color: Colors.grey,
+                              fontSize: 16,
                             ),
-                            SizedBox(width: Swidth*0.09,),
-                            Column(
-                              children: [
-                                Text("Arslan Tariq",style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: Swidth*0.1,
-                                ),),
-                                Text("Flutter Developer",style: TextStyle(
-                                  color: Colors.black,
-
-                                  fontSize: Swidth*0.05,
-                                ),)
-                              ],
-                            )
-                          ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                  child: Text(
+                    "Activity Projects",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Arslan is the best student Ever",
+                              style: TextStyle(color: Colors.black, fontSize: 16),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 10),
+                      Expanded(
+                        child: Container(
+                          height: 100,
+                          decoration: BoxDecoration(
+                            color: Colors.grey,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Center(
+                            child: Text(
+                              "Arslan is the best student Ever",
+                              style: TextStyle(color: Colors.black, fontSize: 16),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
                         ),
                       ),
                     ],
                   ),
-
                 ),
-
-
               ],
             ),
+          ),
+        ],
+      ),
+    );
 
-      );
 
   }
 }

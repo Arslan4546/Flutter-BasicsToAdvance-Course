@@ -26,9 +26,7 @@ class VerticalScreen extends StatelessWidget {
 
         ],
       ),
-      body: Builder(
-          builder: (context) {
-            return Column(
+      body:  Column(
 
               children: [
                 Container(
@@ -278,9 +276,8 @@ class VerticalScreen extends StatelessWidget {
                 ),
 
               ],
-            );
-          }
-      ),
+            ),
+
     );
   }
 }
