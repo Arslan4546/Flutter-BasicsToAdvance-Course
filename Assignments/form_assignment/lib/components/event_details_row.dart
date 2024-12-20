@@ -4,7 +4,7 @@ class EventDetailsRow extends StatelessWidget {
   final String label;
   final String value;
 
-  const EventDetailsRow({required this.label, required this.value});
+  const EventDetailsRow({super.key, required this.label, required this.value});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class EventDetailsRow extends StatelessWidget {
       child: Row(
         children: [
           Expanded(flex: 2, child: Text(label)),
-          Expanded(flex: 3, child: Text(value, style: TextStyle(fontWeight: FontWeight.bold))),
+          Expanded(flex: 3, child: Text(value, style: const TextStyle(fontWeight: FontWeight.bold))),
         ],
       ),
     );

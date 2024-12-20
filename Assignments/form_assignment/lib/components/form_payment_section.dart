@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class FormPaymentSection extends StatelessWidget {
+  const FormPaymentSection({super.key,required this.options});
+
+  final List<String> options;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -9,7 +13,7 @@ class FormPaymentSection extends StatelessWidget {
         const Text('Payment Method:', style: TextStyle(fontSize: 16)),
         Wrap(
           spacing: 8.0,
-          children: ['Credit Card', 'Debit Card', 'Cash', 'Check']
+          children: options
               .map(
                 (method) => Row(
               mainAxisSize: MainAxisSize.min,
