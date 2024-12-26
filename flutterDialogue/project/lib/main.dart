@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:project/LoginDialogue.dart';
 import 'package:project/SimpleDialogue.dart';
-
-
-import 'LoginDialogue.dart';
+import 'package:project/choose_dialogue.dart';
+import 'package:project/date_time_picker.dart';
+import 'package:project/rateUs_dialogue.dart';
+import 'package:project/success_dialogue.dart';
+import 'package:project/warning_dialogue.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,63 +17,159 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false, // Optional: Removes the debug banner
+      home: BUttonScreen(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
+class BUttonScreen extends StatefulWidget {
+  const BUttonScreen({super.key});
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<BUttonScreen> createState() => _BUttonScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
+class _BUttonScreenState extends State<BUttonScreen> {
+  void _SimpleDialogue() {
     showDialog(
       context: context,
-      builder: (context) => Dialog(
+      builder: (context) => const Dialog(
         elevation: 18,
         child: DialogBody(),
       ),
     );
   }
 
+  void _LoginDialogue() {
+    showDialog(
+      context: context,
+      builder: (context) => const Dialog(
+        elevation: 18,
+        child: MainDialogue(),
+      ),
+    );
+  }
+
+  void _WarningDialogue() {
+    showDialog(
+      context: context,
+      builder: (context) => const Dialog(
+        elevation: 18,
+        child: WarningDialog(),
+      ),
+    );
+  }
+
+  void _RateUsDialogue() {
+    showDialog(
+      context: context,
+      builder: (context) => const Dialog(
+        elevation: 18,
+        child: RatingDialog(),
+      ),
+    );
+  }
+
+  void _SucessDialogue() {
+    showDialog(
+      context: context,
+      builder: (context) => const Dialog(
+        elevation: 18,
+        child: SucessDialog(),
+      ),
+    );
+  }
+
+  void _ChooseDialogue() {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        elevation: 18,
+        child: LanguageDialog(),
+      ),
+    );
+  }
+
+  void _DateTimeDialogue() {
+    showDialog(
+      context: context,
+      builder: (context) => Dialog(
+        elevation: 18,
+        child: DateTimePickerExample(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final buttonWidth = screenWidth > 600 ? 200.0 : 100.0;
+
     return Scaffold(
+      backgroundColor: Colors.white70,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        backgroundColor: Colors.green,
+        title: const Text(
+          "Different Dialogue Box Examples",
+          style: TextStyle(color: Colors.white),
+        ),
+        centerTitle: true,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+        child: Wrap(
+          spacing: 20,
+          runSpacing: 20,
+          alignment: WrapAlignment.center,
+          children: [
+            buildButton(
+                context, 'Delete', Colors.red, buttonWidth, _SimpleDialogue),
+            buildButton(
+                context, 'Login', Colors.blue, buttonWidth, _LoginDialogue),
+            buildButton(
+                context, "Warning", Colors.red, buttonWidth, _WarningDialogue),
+            buildButton(
+                context, "Rate Us", Colors.green, buttonWidth, _RateUsDialogue),
+            buildButton(
+                context, "Success", Colors.green, buttonWidth, _SucessDialogue),
+            buildButton(
+                context, "Choose", Colors.green, buttonWidth, _ChooseDialogue),
+            buildButton(context, "Picker", Colors.green, buttonWidth,
+                _DateTimeDialogue),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+    );
+  }
+
+  Widget buildButton(
+    BuildContext context,
+    String text,
+    Color color,
+    double width,
+    VoidCallback onPressed, {
+    Color textColor = Colors.white,
+    Color borderColor = Colors.transparent,
+  }) {
+    return SizedBox(
+      width: width,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: color,
+          side: BorderSide(color: borderColor, width: 1.5),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: TextStyle(
+            color: textColor,
+            fontSize: 12,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
       ),
     );
   }
