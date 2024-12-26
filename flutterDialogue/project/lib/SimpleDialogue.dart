@@ -5,16 +5,29 @@ class DialogBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0), // Add padding for better UI
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      padding: const EdgeInsets.all(20.0), // Add padding for better UI
       child: Column(
         mainAxisSize: MainAxisSize.min, // Adjust height to fit content
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: const [
-              Icon(Icons.delete, color: Colors.red),
+              Icon(Icons.warning, color: Colors.red, size: 28),
               SizedBox(width: 10),
-              Text('Do you want to delete this file?'),
+              Expanded(
+                child: Text(
+                  'Do you want to delete this file?',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 20),
@@ -29,14 +42,38 @@ class DialogBody extends StatelessWidget {
                   );
                   Navigator.of(context).pop();
                 },
-                child: const Text('Yes'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.redAccent,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20, vertical: 12), // Custom padding
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text(
+                  'Yes',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
+                ),
               ),
               const SizedBox(width: 10),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text('No'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.greenAccent.shade700,
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20, vertical: 12), // Custom padding
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text(
+                  'No',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
+                ),
               ),
             ],
           ),

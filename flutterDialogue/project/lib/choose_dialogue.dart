@@ -10,19 +10,22 @@ class _LanguageDialogState extends State<LanguageDialog> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 400,
       width: 300,
       child: AlertDialog(
-        title: const Text('Choose your favourite programming language',style: TextStyle(fontSize: 15
-        ),),
+        title: const Text(
+          'Choose your favourite programming language',
+          style: TextStyle(fontSize: 15),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             RadioListTile<String>(
-              title:  Text('Dart',style: TextStyle(
-                fontSize: 15
-              ),),
+              title: Text(
+                'Dart',
+                style: TextStyle(fontSize: 15),
+              ),
               value: 'Dart',
               groupValue: _selectedLanguage,
               onChanged: (value) {
@@ -32,9 +35,10 @@ class _LanguageDialogState extends State<LanguageDialog> {
               },
             ),
             RadioListTile<String>(
-              title: const Text('Java',style: TextStyle(
-                  fontSize: 15
-              ),),
+              title: const Text(
+                'Java',
+                style: TextStyle(fontSize: 15),
+              ),
               value: 'Java',
               groupValue: _selectedLanguage,
               onChanged: (value) {
@@ -44,9 +48,10 @@ class _LanguageDialogState extends State<LanguageDialog> {
               },
             ),
             RadioListTile<String>(
-              title: const Text('Python',style: TextStyle(
-                  fontSize: 15
-              ),),
+              title: const Text(
+                'Python',
+                style: TextStyle(fontSize: 15),
+              ),
               value: 'Python',
               groupValue: _selectedLanguage,
               onChanged: (value) {
