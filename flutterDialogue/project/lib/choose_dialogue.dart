@@ -22,7 +22,7 @@ class _LanguageDialogState extends State<LanguageDialog> {
           mainAxisSize: MainAxisSize.min,
           children: [
             RadioListTile<String>(
-              title: Text(
+              title: const Text(
                 'Dart',
                 style: TextStyle(fontSize: 15),
               ),

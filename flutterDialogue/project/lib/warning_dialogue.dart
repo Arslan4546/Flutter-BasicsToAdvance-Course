@@ -68,7 +68,7 @@ class WarningDialog extends StatelessWidget {
           ),
         ),
         // Warning icon
-        Positioned(
+       const Positioned(
           top: -50, // Position above the dialog
           child: CircleAvatar(
             radius: 50,

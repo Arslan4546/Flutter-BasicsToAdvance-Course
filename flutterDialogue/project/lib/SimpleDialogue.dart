@@ -14,8 +14,8 @@ class DialogBody extends StatelessWidget {
         mainAxisSize: MainAxisSize.min, // Adjust height to fit content
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: const [
+          const Row(
+            children: [
               Icon(Icons.warning, color: Colors.red, size: 28),
               SizedBox(width: 10),
               Expanded(

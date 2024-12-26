@@ -16,21 +16,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false, // Optional: Removes the debug banner
-      home: BUttonScreen(),
+      home: ButtonScreen(),
     );
   }
 }
 
-class BUttonScreen extends StatefulWidget {
-  const BUttonScreen({super.key});
+class ButtonScreen extends StatefulWidget {
+  const ButtonScreen({super.key});
 
   @override
-  State<BUttonScreen> createState() => _BUttonScreenState();
+  State<ButtonScreen> createState() => _ButtonScreenState();
 }
 
-class _BUttonScreenState extends State<BUttonScreen> {
+class _ButtonScreenState extends State<ButtonScreen> {
   void _SimpleDialogue() {
     showDialog(
       context: context,
@@ -76,7 +76,7 @@ class _BUttonScreenState extends State<BUttonScreen> {
       context: context,
       builder: (context) => const Dialog(
         elevation: 18,
-        child: SucessDialog(),
+        child: SuccessDialouge(),
       ),
     );
   }

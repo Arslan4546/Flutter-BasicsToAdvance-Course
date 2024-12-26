@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SucessDialog extends StatelessWidget {
-  const SucessDialog({super.key});
+class SuccessDialouge extends StatelessWidget {
+  const SuccessDialouge({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,7 @@ class SucessDialog extends StatelessWidget {
           ),
         ),
         // Warning icon
-        Positioned(
+      const  Positioned(
           top: -50, // Position above the dialog
           child: CircleAvatar(
             radius: 50,
