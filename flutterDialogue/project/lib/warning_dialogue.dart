@@ -73,7 +73,7 @@ class WarningDialog extends StatelessWidget {
           child: CircleAvatar(
             radius: 50,
             backgroundColor: Colors.yellow,
-            child: const Icon(
+            child:  Icon(
               Icons.warning,
               size: 36,
               color: Colors.white,

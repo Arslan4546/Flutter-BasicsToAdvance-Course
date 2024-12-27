@@ -146,11 +146,11 @@ class _LandscapescreenState extends State<Landscapescreen> {
                     ),
                     const SizedBox(height: 8),
                     const EventDetailsRow(
-                        label: 'Event Name', value: 'Social Media Creative'),
+                        label: 'Event Name', value: 'Qwali night'),
                     const EventDetailsRow(
-                        label: 'Date', value: 'August 29, 2030'),
+                        label: 'Date', value: 'December 30, 2024'),
                     const EventDetailsRow(
-                        label: 'Time', value: '1:00 PM - 3:00 PM'),
+                        label: 'Time', value: '7:00 PM - 10:00 PM'),
                     const SizedBox(height: 16),
                     const Text(
                       'Participant Information',

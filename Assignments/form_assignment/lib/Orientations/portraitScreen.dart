@@ -199,9 +199,9 @@ class _PortraitScreenState extends State<PortraitScreen> {
               child:  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  EventDetailsRow(label: 'Event Name', value: 'Social Media Creative'),
-                  EventDetailsRow(label: 'Date', value: 'August 29, 2030'),
-                  EventDetailsRow(label: 'Time', value: '1:00 PM - 3:00 PM'),
+                  EventDetailsRow(label: 'Event Name', value: 'Qwali Night'),
+                  EventDetailsRow(label: 'Date', value: 'December 30, 2024'),
+                  EventDetailsRow(label: 'Time', value: '7:00 PM - 10:00 PM'),
 
                 ],
               ),
@@ -288,7 +288,7 @@ class _PortraitScreenState extends State<PortraitScreen> {
 
             // Disclaimer and Signature
 
-            SizedBox(height: clientSide*0.016),
+            SizedBox(height: clientSide*0.011),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
