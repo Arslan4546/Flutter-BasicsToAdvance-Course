@@ -46,8 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
 appBar: AppBar(
-  backgroundColor: Color(0xFFF7A41F),
-  title: Text("Different Shapes Using Custom Clipper",style: TextStyle(
+  backgroundColor: const Color(0xFFF7A41F),
+  title: const Text("Different Shapes Using Custom Clipper",style: TextStyle(
     color: Colors.black,
     fontWeight: FontWeight.bold,
   ),),
@@ -64,7 +64,7 @@ appBar: AppBar(
               // ClipOval(child: Image.asset(src,height: 300,width: 400,fit: BoxFit.fill,)),
               Column(
                 children: [
-                  Text("Circular Wave",style: TextStyle(
+                  const Text("Circular Wave",style: TextStyle(
                     fontSize: 18
                   ),),
 
@@ -81,7 +81,7 @@ appBar: AppBar(
               ),
               Column(
                 children: [
-                  Text("Curvy Mountain",style: TextStyle(
+                  const Text("Curvy Mountain",style: TextStyle(
                       fontSize: 18
                   ),),
 
@@ -98,7 +98,7 @@ appBar: AppBar(
               ),
               Column(
                 children: [
-                  Text("Pointed ",style: TextStyle(
+                  const Text("Pointed ",style: TextStyle(
                       fontSize: 18
                   ),),
 
@@ -115,7 +115,7 @@ appBar: AppBar(
               ),
               Column(
                 children: [
-                  Text("Double Arch",style: TextStyle(
+                  const Text("Double Arch",style: TextStyle(
                       fontSize: 18
                   ),),
 
@@ -134,7 +134,7 @@ appBar: AppBar(
 
             ],
           ),
-          SizedBox(height: 50,),
+          const SizedBox(height: 50,),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -143,7 +143,7 @@ appBar: AppBar(
               // ClipOval(child: Image.asset(src,height: 300,width: 400,fit: BoxFit.fill,)),
               Column(
                 children: [
-                  Text("Symmetrical Hills",style: TextStyle(
+                  const Text("Symmetrical Hills",style: TextStyle(
                       fontSize: 18
                   ),),
 
@@ -160,7 +160,7 @@ appBar: AppBar(
               ),
               Column(
                 children: [
-                  Text("Tilted Peaks",style: TextStyle(
+                  const Text("Tilted Peaks",style: TextStyle(
                       fontSize: 18
                   ),),
 
@@ -177,7 +177,7 @@ appBar: AppBar(
               ),
               Column(
                 children: [
-                  Text("Deep Velly",style: TextStyle(
+                  const Text("Deep Velly",style: TextStyle(
                       fontSize: 18
                   ),),
 
@@ -194,7 +194,7 @@ appBar: AppBar(
               ),
               Column(
                 children: [
-                  Text("Ripple Shape",style: TextStyle(
+                  const Text("Ripple Shape",style: TextStyle(
                       fontSize: 18
                   ),),
 
