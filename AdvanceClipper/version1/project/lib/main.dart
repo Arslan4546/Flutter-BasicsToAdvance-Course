@@ -4,7 +4,7 @@ import 'package:project/CircularWaveClipper.dart';
 import 'package:project/SymmetricHills.dart';
 import 'package:project/TiltedPeaks.dart';
 import 'package:project/doubleArch.dart';
-import 'package:project/DeepVellyClipper.dart';
+import 'package:project/OverlappingPeaks.dart';
 import 'package:project/rippleShape.dart';
 import 'curvyMountain.dart';
 
@@ -98,7 +98,7 @@ appBar: AppBar(
               ),
               Column(
                 children: [
-                  const Text("Pointed ",style: TextStyle(
+                  const Text("Pointed Tops",style: TextStyle(
                       fontSize: 18
                   ),),
 
@@ -177,12 +177,12 @@ appBar: AppBar(
               ),
               Column(
                 children: [
-                  const Text("Deep Velly",style: TextStyle(
+                  const Text("OverLapping Peaks",style: TextStyle(
                       fontSize: 18
                   ),),
 
                   ClipPath(
-                    clipper: DeepValleyClipper(),
+                    clipper: PeaksClipper(),
                     child: Image.network(
                       src,
                       height: 100,

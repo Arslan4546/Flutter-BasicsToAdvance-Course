@@ -5,6 +5,9 @@ class DoubleArchClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
     path.moveTo(0, size.height * 0.5);
+
+
+
     path.cubicTo(size.width * 0.25, size.height * 0.3, size.width * 0.25, size.height * 0.7, size.width * 0.5, size.height * 0.5);
     path.cubicTo(size.width * 0.75, size.height * 0.3, size.width * 0.75, size.height * 0.7, size.width, size.height * 0.5);
     path.lineTo(size.width, size.height);
