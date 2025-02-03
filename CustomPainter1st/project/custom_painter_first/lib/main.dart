@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        backgroundColor: Colors.black,
         appBar: AppBar(title: const Text("ShaderMask on Text")),
         body: const Center(
           child: GradientText(),
