@@ -48,10 +48,10 @@ class SmilyPainter extends CustomPainter {
         Offset(leftEyeHorizontalPosition, eyesVerticalPosition);
 
     final Offset leftInnerEyeOffset =
-        Offset(leftEyeHorizontalPosition, innerEyesVerticalPosition);
+        Offset(leftEyeHorizontalPosition, innerEyesVerticalPosition + 10);
 
     final Offset rightInnerEyeOffset =
-        Offset(rightEyeHorizontalPosition, innerEyesVerticalPosition);
+        Offset(rightEyeHorizontalPosition, innerEyesVerticalPosition + 10);
 
     final Offset rightEyeOffset =
         Offset(rightEyeHorizontalPosition, eyesVerticalPosition);
@@ -105,11 +105,11 @@ class SmilyPainter extends CustomPainter {
     // canvas.drawLine(
     //     rightEyeBrowOffsetStart, rightEyeBrowOffsetEnd, innerEyesPaint);
 
-    //Draw circle
-    canvas.drawCircle(
-        Offset(radius - 11, radius + 30), radius * 0.1, innerEyesPaint);
-    canvas.drawCircle(
-        Offset(radius + 11, radius + 30), radius * 0.1, innerEyesPaint);
+    //Draw circle / Nose Design
+    // canvas.drawCircle(
+    //     Offset(radius - 11, radius + 30), radius * 0.1, innerEyesPaint);
+    // canvas.drawCircle(
+    //     Offset(radius + 11, radius + 30), radius * 0.1, innerEyesPaint);
 
     // Draw highty sad Impression
     // canvas.drawLine(Offset(radius - 1, radius + 20),
@@ -143,12 +143,12 @@ class SmilyPainter extends CustomPainter {
 //     );
     // canvas.drawPath(nosePath, innerEyesPaint);
 
-    // Draw Left Ear
+    // // Draw Left Ear
     // canvas.drawOval(
     //   Rect.fromCenter(
-    //     center: Offset(width / 2 - radius, height / 2 - 60),
+    //     center: Offset(width / 2 - radius + 10, height / 2 - 80),
     //     width: radius / 2,
-    //     height: radius / 3,
+    //     height: radius / 2,
     //   ),
     //   facePaint,
     // );
@@ -156,12 +156,82 @@ class SmilyPainter extends CustomPainter {
     // // Draw Right Ear
     // canvas.drawOval(
     //   Rect.fromCenter(
-    //     center: Offset(width / 2 + radius, height / 2 - 60),
+    //     center: Offset(width / 2 + radius - 10, height / 2 - 80),
     //     width: radius / 2,
-    //     height: radius / 3,
+    //     height: radius / 2,
     //   ),
     //   facePaint,
     // );
+
+    // // Draw the mouth (custom shape)
+    // final mouthPath = Path();
+    // mouthPath.moveTo(size.width * 0.3, size.height * 0.7);
+    // mouthPath.quadraticBezierTo(
+    //   size.width * 0.5,
+    //   size.height * 0.8,
+    //   size.width * 0.7,
+    //   size.height * 0.7,
+    // );
+    // mouthPath.quadraticBezierTo(
+    //   size.width * 0.5,
+    //   size.height * 0.9,
+    //   size.width * 0.3,
+    //   size.height * 0.7,
+    // );
+
+    // final mouthPaint = Paint()
+    //   ..color = Colors.black
+    //   ..style = PaintingStyle.fill;
+
+    // canvas.drawPath(mouthPath, mouthPaint);
+
+    // 🎨 Perfectly Symmetrical Mustache (Thinner & Wider)
+    final Paint mustachePaint = Paint()
+      ..color = Colors.black
+      ..style = PaintingStyle.fill;
+
+    Path mustachePath = Path();
+    double mustacheY = height * 0.68; // Mustache position (slightly lower)
+    double mustacheWidth = width * 0.75; // Increased width to cover more face
+    double mustacheHeight =
+        height * 0.12; // Reduced height for thinner mustache
+    double curveDepth = mustacheHeight * 1.0; // Adjusted depth for smoothness
+
+// Left Side of Mustache
+    mustachePath.moveTo(width / 2, mustacheY);
+    mustachePath.cubicTo(
+      width / 2 - mustacheWidth * 0.38,
+      mustacheY - mustacheHeight, // Left peak curve
+      width / 2 - mustacheWidth * 0.55, mustacheY + curveDepth, // Bottom dip
+      width / 2 - mustacheWidth * 0.28, mustacheY + mustacheHeight, // Rise up
+    );
+    mustachePath.cubicTo(
+      width / 2 - mustacheWidth * 0.1,
+      mustacheY + mustacheHeight * 0.5, // Small upward curve
+      width / 2 - mustacheWidth * 0.2,
+      mustacheY - mustacheHeight * 0.3, // Smoother blend
+      width / 2, mustacheY, // Back to center
+    );
+
+// Right Side of Mustache (Mirrored)
+    mustachePath.cubicTo(
+      width / 2 + mustacheWidth * 0.2,
+      mustacheY - mustacheHeight * 0.3, // Smooth blend
+      width / 2 + mustacheWidth * 0.1,
+      mustacheY + mustacheHeight * 0.5, // Small upward curve
+      width / 2 + mustacheWidth * 0.28, mustacheY + mustacheHeight, // Rise up
+    );
+    mustachePath.cubicTo(
+      width / 2 + mustacheWidth * 0.55, mustacheY + curveDepth, // Bottom dip
+      width / 2 + mustacheWidth * 0.38,
+      mustacheY - mustacheHeight, // Right peak curve
+      width / 2, mustacheY, // Back to center
+    );
+
+    mustachePath.close();
+
+// 🎨 Draw the Thinner, Wider Mustache
+    canvas.drawPath(mustachePath, mustachePaint);
   }
 
   @override
