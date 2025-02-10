@@ -57,7 +57,7 @@ class ClockPainter extends CustomPainter {
     canvas.save();
     canvas.translate(center.dx, center.dy);
 
-    for (var i = 1; i <= 60; i++) {
+    for (var i = 0; i < 60; i++) {
       bool isHourTick = i % 5 == 0;
       canvas.drawLine(
         Offset(0, -radius),
