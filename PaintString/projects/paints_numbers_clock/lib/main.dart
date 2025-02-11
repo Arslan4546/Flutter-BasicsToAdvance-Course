@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:my_custom_clock/custom_clock.dart';
+import 'package:paints_numbers_clock/custom_clock.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
