@@ -1,0 +1,65 @@
+Let’s Check Different Angles
+🔹 At 0° (12 o’clock)
+angle = 0 radians
+cos(0) = 1
+y = center.dy - textRadius * 1
+Y kam ho gaya (upar chala gaya) ✅
+🔹 At 90° (3 o’clock)
+angle = π/2 radians
+cos(π/2) = 0
+y = center.dy - textRadius * 0
+Y center per hi raha ✅
+🔹 At 180° (6 o’clock)
+angle = π radians
+cos(π) = -1
+y = center.dy - textRadius * (-1)
+Y zyada ho gaya (neeche chala gaya) ✅
+📌 Conclusion:
+
+cos(angle) 1 se -1 tak move karta hai.
+Jab cos(angle) = 1 hota hai to y sab se upar hota hai (12 o'clock).
+Jab cos(angle) = -1 hota hai to y sab se neeche hota hai (6 o'clock).
+Minus isliye ho raha hai takay circle ka orientation correct rahe.
+Why X is Positive and Negative? (x = center.dx + textRadius * sin(angle);)
+Tumhare code mai x is formula se calculate ho raha hai:
+
+dart
+Copy
+Edit
+final x = center.dx + textRadius * sin(angle);
+📌 X mein kab + aur kab - hota hai?
+👉 sin(angle) left to right movement control karta hai.
+
+Check Different Angles
+🔹 At 0° (12 o’clock)
+sin(0) = 0
+x = center.dx + textRadius * 0
+X center per hi raha ✅
+🔹 At 90° (3 o’clock)
+sin(π/2) = 1
+x = center.dx + textRadius * 1
+X right chala gaya (3 o'clock position) ✅
+🔹 At 180° (6 o’clock)
+sin(π) = 0
+x = center.dx + textRadius * 0
+X center per hi raha ✅
+🔹 At 270° (9 o’clock)
+sin(3π/2) = -1
+x = center.dx + textRadius * (-1)
+X left chala gaya (9 o'clock position) ✅
+📌 Conclusion:
+
+sin(angle) -1 to 1 tak move karta hai.
+Jab sin(angle) = 1 hota hai to x sab se right hota hai (3 o'clock).
+Jab sin(angle) = -1 hota hai to x sab se left hota hai (9 o'clock).
+Plus isliye ho raha hai taake right side move kare.
+Summary
+Y minus isliye ho raha hai kyunki Flutter ka Y-axis ulta hota hai (upar negative hota hai, neeche positive).
+X ka sign sin(angle) ke basis pe right (positive) aur left (negative) hota hai.
+cos(angle) vertical movement control karta hai.
+sin(angle) horizontal movement control karta hai.
+📌 Final Concept:
+
+sin(θ) left-right movement control karta hai.
+cos(θ) up-down movement control karta hai.
+Minus lagana Flutter ke inverted coordinate system ko adjust karne ke liye zaroori hai. ✅

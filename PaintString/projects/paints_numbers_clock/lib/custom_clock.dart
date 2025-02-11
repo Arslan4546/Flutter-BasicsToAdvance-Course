@@ -33,7 +33,7 @@ class ClockPainter extends CustomPainter {
     canvas.drawCircle(center, radius, borderPaint);
 
     // Draw Center Dot
-    canvas.drawCircle(center, radius * 0.5, centerPaint);
+    canvas.drawCircle(center, radius * 0.1, centerPaint);
 
     // Draw Hour and Minute Ticks
     _drawTicks(canvas, size, center, tickColor);
@@ -45,22 +45,6 @@ class ClockPainter extends CustomPainter {
   void _drawTicks(Canvas canvas, Size size, Offset center, Color tickColor) {
     final radius = min(size.width, size.height) / 2;
     const angle = 2 * pi / 60;
-    final hourseTickLength = radius * 0.20;
-
-    const numbers = [
-      "12",
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "11"
-    ];
 
     final hoursTickPaint = Paint()
       ..color = tickColor
@@ -81,19 +65,69 @@ class ClockPainter extends CustomPainter {
         Offset(0, -radius + (isHourTick ? 15 : 10)),
         isHourTick ? hoursTickPaint : minutesTickPaint,
       );
-      var isHoursString = numbers[i ~/ 5];
-      TextSpan textSpan = TextSpan(text: isHoursString);
-      TextPainter textPainter = TextPainter(text: textSpan);
-      textPainter.layout();
-      textPainter.paint(
-        canvas,
-        Offset(0, -radius + hourseTickLength + 10),
-      );
 
       canvas.rotate(angle);
     }
 
     canvas.restore();
+
+    // Draw numbers separately without rotation
+    _drawClockNumbers(canvas, size, center, tickColor);
+  }
+
+  void _drawClockNumbers(
+      Canvas canvas, Size size, Offset center, Color tickColor) {
+    final radius = min(size.width, size.height) / 2;
+    const numbers = [
+      "12",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11"
+    ];
+
+    for (var i = 0; i < 12; i++) {
+      final angle = (i * 30) *
+          pi /
+          180; // Convert degrees to radians (30 degrees per hour)
+      final textRadius = radius - 25; // Adjust this value to position numbers
+
+      // Calculate x and y positions using trigonometry
+      final x = center.dx + textRadius * sin(angle);
+      final y = center.dy - textRadius * cos(angle);
+
+      final textSpan = TextSpan(
+        text: numbers[i],
+        style: TextStyle(
+          color: tickColor,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      );
+
+      final textPainter = TextPainter(
+        text: textSpan,
+        textAlign: TextAlign.center,
+        textDirection: TextDirection.ltr,
+      );
+
+      textPainter.layout();
+
+      // Center the text at the calculated position
+      final offset = Offset(
+        x - textPainter.width / 2,
+        y - textPainter.height / 2,
+      );
+
+      textPainter.paint(canvas, offset);
+    }
   }
 
   void _drawNeedles(
