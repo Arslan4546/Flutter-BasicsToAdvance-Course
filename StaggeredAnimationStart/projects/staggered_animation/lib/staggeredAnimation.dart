@@ -14,6 +14,7 @@ class _AnimatedMenuState extends State<AnimatedMenu>
   late AnimationController _controller;
 
 // initializse different controller for different animations
+
   late Animation<double> _rotationAnimation;
   late Animation<double> _widthAnimation;
   late Animation<double> _heightAnimation;
