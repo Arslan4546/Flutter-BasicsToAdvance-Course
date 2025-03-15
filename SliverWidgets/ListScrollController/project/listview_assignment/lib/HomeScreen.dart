@@ -34,6 +34,18 @@ class _ListViewScreenState extends State<ListViewScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationIcons(borderRadius: borderRadius),
+      floatingActionButton: Container(
+        height: 60,
+        width: 60,
+        decoration: const BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.blue,
+        ),
+        child: const Icon(
+          Icons.message_rounded,
+          color: Colors.white,
+        ),
+      ),
     );
   }
 }

@@ -45,6 +45,7 @@ class _ListContentState extends State<ListContent> {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.custom(
+        itemExtent: 60,
         controller: _controller, // Attach controller
         childrenDelegate: SliverChildBuilderDelegate(
           childCount: titleList.length,
