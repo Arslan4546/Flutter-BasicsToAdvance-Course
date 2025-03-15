@@ -12,16 +12,28 @@ class ListViewScreen extends StatefulWidget {
 }
 
 class _ListViewScreenState extends State<ListViewScreen> {
+  BoxShape shape = BoxShape.circle;
+
+  void updateShape(BoxShape newShape) {
+    setState(() {
+      shape = newShape;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-        appBar: AppBarWidget(),
-        body: Column(
-          children: [
-            TabBarWidget(),
-            ListContent(),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationIcons());
+    return Scaffold(
+      appBar: const AppBarWidget(),
+      body: Column(
+        children: [
+          const TabBarWidget(),
+          ListContent(
+            shape: shape,
+            onShapeChanged: updateShape, // Pass callback
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationIcons(shape: shape),
+    );
   }
 }

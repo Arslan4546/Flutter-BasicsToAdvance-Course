@@ -1,18 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:listview_assignment/utilities/ListTileContent.dart';
 
 class ListContent extends StatefulWidget {
-  const ListContent({super.key});
+  final BoxShape shape;
+  final Function(BoxShape) onShapeChanged; // Callback function
+
+  const ListContent(
+      {super.key, required this.shape, required this.onShapeChanged});
 
   @override
   State<ListContent> createState() => _ListContentState();
 }
 
+BoxDecoration decoration = BoxDecoration(
+  borderRadius: BorderRadius.circular(20),
+);
+
 class _ListContentState extends State<ListContent> {
+  late ScrollController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = ScrollController();
+    _controller.addListener(() {
+      if (_controller.position.userScrollDirection == ScrollDirection.forward) {
+        widget.onShapeChanged(BoxShape.circle);
+      } else if (_controller.position.userScrollDirection ==
+          ScrollDirection.reverse) {
+        widget.onShapeChanged(
+            BoxDecoration(borderRadius: BorderRadius.circular(20)).shape);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.custom(
+        controller: _controller, // Use controller here
         childrenDelegate: SliverChildBuilderDelegate(
           childCount: titleList.length,
           (context, index) {
