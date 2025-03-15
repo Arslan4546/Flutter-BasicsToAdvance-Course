@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:listview_assignment/utilities/ListTileContent.dart';
+import 'package:listview_assignment/components/bottomSheet.dart';
 
 class ListContent extends StatefulWidget {
-  final BoxShape shape;
-  final Function(BoxShape) onShapeChanged; // Callback function
+  final BorderRadius borderRadius;
+  final Function(BorderRadius) onBorderRadiusChanged;
 
   const ListContent(
-      {super.key, required this.shape, required this.onShapeChanged});
+      {super.key,
+      required this.borderRadius,
+      required this.onBorderRadiusChanged});
 
   @override
   State<ListContent> createState() => _ListContentState();
 }
-
-BoxDecoration decoration = BoxDecoration(
-  borderRadius: BorderRadius.circular(20),
-);
 
 class _ListContentState extends State<ListContent> {
   late ScrollController _controller;
@@ -26,11 +25,12 @@ class _ListContentState extends State<ListContent> {
     _controller = ScrollController();
     _controller.addListener(() {
       if (_controller.position.userScrollDirection == ScrollDirection.forward) {
-        widget.onShapeChanged(BoxShape.circle);
+        // When scrolling up → fully circular
+        widget.onBorderRadiusChanged(BorderRadius.circular(50));
       } else if (_controller.position.userScrollDirection ==
           ScrollDirection.reverse) {
-        widget.onShapeChanged(
-            BoxDecoration(borderRadius: BorderRadius.circular(20)).shape);
+        // When scrolling down → slightly rounded rectangle
+        widget.onBorderRadiusChanged(BorderRadius.circular(15));
       }
     });
   }
@@ -45,7 +45,7 @@ class _ListContentState extends State<ListContent> {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.custom(
-        controller: _controller, // Use controller here
+        controller: _controller, // Attach controller
         childrenDelegate: SliverChildBuilderDelegate(
           childCount: titleList.length,
           (context, index) {
@@ -90,10 +90,23 @@ class _ListContentState extends State<ListContent> {
                   ),
                 ],
               ),
-              trailing: const Icon(
-                Icons.chat_bubble_outline_rounded,
-                color: Colors.grey,
-                size: 24,
+              trailing: IconButton(
+                icon: const Icon(
+                  Icons.chat_bubble_outline_rounded,
+                  color: Colors.grey,
+                  size: 24,
+                ),
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return BottomSheetContent(
+                        imageUrl: imagesList[index],
+                        title: titleList[index],
+                      );
+                    },
+                  );
+                },
               ),
             );
           },

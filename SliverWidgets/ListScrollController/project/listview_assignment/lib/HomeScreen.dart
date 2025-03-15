@@ -12,11 +12,11 @@ class ListViewScreen extends StatefulWidget {
 }
 
 class _ListViewScreenState extends State<ListViewScreen> {
-  BoxShape shape = BoxShape.circle;
+  BorderRadius borderRadius = BorderRadius.circular(50); // Default: Circular
 
-  void updateShape(BoxShape newShape) {
+  void updateBorderRadius(BorderRadius newRadius) {
     setState(() {
-      shape = newShape;
+      borderRadius = newRadius;
     });
   }
 
@@ -28,12 +28,12 @@ class _ListViewScreenState extends State<ListViewScreen> {
         children: [
           const TabBarWidget(),
           ListContent(
-            shape: shape,
-            onShapeChanged: updateShape, // Pass callback
+            borderRadius: borderRadius,
+            onBorderRadiusChanged: updateBorderRadius, // Pass callback
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationIcons(shape: shape),
+      bottomNavigationBar: BottomNavigationIcons(borderRadius: borderRadius),
     );
   }
 }

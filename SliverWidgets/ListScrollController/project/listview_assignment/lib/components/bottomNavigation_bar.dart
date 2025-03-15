@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class BottomNavigationIcons extends StatefulWidget {
-  final BoxShape shape;
-  const BottomNavigationIcons({super.key, required this.shape});
+  final BorderRadius borderRadius;
+  const BottomNavigationIcons({super.key, required this.borderRadius});
 
   @override
   State<BottomNavigationIcons> createState() => _BottomNavigationIconsState();
 }
 
 class _BottomNavigationIconsState extends State<BottomNavigationIcons> {
-  int _selectedIndex = 1;
+  int _selectedIndex = 1; // Default selected item
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _BottomNavigationIconsState extends State<BottomNavigationIcons> {
       icon: Container(
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          shape: widget.shape, // Use dynamic shape
+          borderRadius: widget.borderRadius, // Use dynamic border radius
           color: _selectedIndex == index ? Colors.black : Colors.transparent,
         ),
         child: Icon(
