@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:listview_assignment/components/ListTileAndView.dart';
 import 'package:listview_assignment/components/app_bar.dart';
 import 'package:listview_assignment/components/bottomNavigation_bar.dart';
+import 'package:listview_assignment/components/floatingButton.dart';
 import 'package:listview_assignment/components/tab_bar.dart';
 
 class ListViewScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class ListViewScreen extends StatefulWidget {
 
 class _ListViewScreenState extends State<ListViewScreen> {
   BorderRadius borderRadius = BorderRadius.circular(50); // Default: Circular
+  String searchQuery = ""; // Search Query State
 
   void updateBorderRadius(BorderRadius newRadius) {
     setState(() {
@@ -20,32 +22,28 @@ class _ListViewScreenState extends State<ListViewScreen> {
     });
   }
 
+  void updateSearchQuery(String query) {
+    setState(() {
+      searchQuery = query;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(),
-      body: Column(
-        children: [
-          const TabBarWidget(),
-          ListContent(
-            borderRadius: borderRadius,
-            onBorderRadiusChanged: updateBorderRadius, // Pass callback
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationIcons(borderRadius: borderRadius),
-      floatingActionButton: Container(
-        height: 60,
-        width: 60,
-        decoration: const BoxDecoration(
-          shape: BoxShape.circle,
-          color: Colors.blue,
+        appBar: AppBarWidget(onSearch: updateSearchQuery),
+        body: Column(
+          children: [
+            const TabBarWidget(),
+            ListContent(
+              borderRadius: borderRadius,
+              onBorderRadiusChanged: updateBorderRadius,
+              // Pass callback
+              searchQuery: searchQuery,
+            ),
+          ],
         ),
-        child: const Icon(
-          Icons.message_rounded,
-          color: Colors.white,
-        ),
-      ),
-    );
+        bottomNavigationBar: BottomNavigationIcons(borderRadius: borderRadius),
+        floatingActionButton: const Floatingbutton());
   }
 }

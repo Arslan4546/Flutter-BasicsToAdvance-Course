@@ -6,11 +6,14 @@ import 'package:listview_assignment/components/bottomSheet.dart';
 class ListContent extends StatefulWidget {
   final BorderRadius borderRadius;
   final Function(BorderRadius) onBorderRadiusChanged;
+  final String searchQuery;
 
-  const ListContent(
-      {super.key,
-      required this.borderRadius,
-      required this.onBorderRadiusChanged});
+  const ListContent({
+    super.key,
+    required this.borderRadius,
+    required this.onBorderRadiusChanged,
+    required this.searchQuery,
+  });
 
   @override
   State<ListContent> createState() => _ListContentState();
@@ -43,12 +46,27 @@ class _ListContentState extends State<ListContent> {
 
   @override
   Widget build(BuildContext context) {
+    // Filter items based on search query
+    List<int> filteredIndices = [];
+    for (int i = 0; i < titleList.length; i++) {
+      if (titleList[i]
+          .toLowerCase()
+          .contains(widget.searchQuery.toLowerCase())) {
+        filteredIndices.add(i);
+      }
+    }
+
+    // Ensure matched items appear at the top
+    filteredIndices.sort((a, b) => titleList[a].compareTo(titleList[b]));
+
     return Expanded(
       child: ListView.custom(
         itemExtent: 60,
-        controller: _controller, // Attach controller
+        controller: _controller,
         childrenDelegate: SliverChildBuilderDelegate(
-          childCount: titleList.length,
+          childCount: filteredIndices.isEmpty
+              ? titleList.length
+              : filteredIndices.length, // Attach controller
           (context, index) {
             return ListTile(
               leading: CircleAvatar(
