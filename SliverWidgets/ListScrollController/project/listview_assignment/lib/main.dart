@@ -18,7 +18,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ListViewScreen(),
-      // this is demo ine
     );
   }
 }
