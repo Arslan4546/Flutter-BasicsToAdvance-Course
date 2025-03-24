@@ -1,5 +1,9 @@
+import 'dart:convert';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:griddemo/DataOfList.dart';
+
 import 'listOfData.dart';
 
 void main() {
@@ -12,10 +16,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.blueGrey,
         appBar: AppBar(
-            backgroundColor: Colors.orange,
-            title: Text("Cartoon"),
+            backgroundColor: Colors.blueGrey,
+            title: Text("Shoes Shopping"),
             centerTitle: true,
             elevation: 0),
         body: AppBody(),
@@ -83,8 +87,8 @@ class _AppBodyState extends State<AppBody> {
                                   ),
                                 ],
                                 color: index.isEven
-                                    ? Colors.blue
-                                    : Colors.pinkAccent,
+                                    ? Colors.blueAccent
+                                    : Colors.teal,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Container(
@@ -98,7 +102,7 @@ class _AppBodyState extends State<AppBody> {
                                             child: Text(
                                               "\$${listdata[index].prise.toString()}",
                                               style: TextStyle(
-                                                  color: Colors.yellow),
+                                                  color: Colors.white),
                                             ),
                                           ),
                                           color: Colors.red,
@@ -140,13 +144,12 @@ class _AppBodyState extends State<AppBody> {
                                           listdata[index].name!,
                                           style: TextStyle(
                                             color: index.isEven
-                                                ? Colors.pinkAccent
-                                                : Colors.blue,
+                                                ? Colors.teal
+                                                : Colors.blueAccent,
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
-//
                                       ],
                                     ),
                                   ),

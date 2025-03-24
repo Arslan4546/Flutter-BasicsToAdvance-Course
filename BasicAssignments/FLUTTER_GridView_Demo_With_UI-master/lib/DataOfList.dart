@@ -9,11 +9,11 @@ class DataOfList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          backgroundColor: Colors.orange,
-          title: Text("Cartoon"),
+          backgroundColor: Colors.blueGrey,
+          title: Text("Shoes App"),
           centerTitle: true,
           elevation: 0),
-      backgroundColor: Colors.orange,
+      backgroundColor: Colors.blueGrey,
       body: DataBody(data: data),
     );
   }
@@ -26,35 +26,45 @@ class DataBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: MediaQuery.of(context).size.width * 80 / 100,
-        height: MediaQuery.of(context).size.height * 60 / 100,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(35)),
+        width: MediaQuery.of(context).size.width * 70 / 100,
+        height: MediaQuery.of(context).size.height * 50 / 100,
+        decoration: BoxDecoration(
+            color: Colors.white, // keeping white for better product visibility
+            borderRadius: BorderRadius.circular(35),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black12, // reduced shadow intensity
+                blurRadius: 15,
+                offset: Offset(0, 8),
+              )
+            ]),
         child: Stack(
           children: [
             Positioned(
               bottom: 0,
               child: Container(
-                width: MediaQuery.of(context).size.width * 80 / 100,
-                height: MediaQuery.of(context).size.height * 50 / 100,
+                width: MediaQuery.of(context).size.width * 70 / 100,
+                height: MediaQuery.of(context).size.height * 40 / 100,
                 decoration: BoxDecoration(
-                    color: Colors.green,
+                    color: Colors.blueGrey.shade50,
                     borderRadius: BorderRadius.circular(35)),
                 child: Container(
                   margin: EdgeInsets.only(bottom: 10),
-                  width: MediaQuery.of(context).size.width * 80 / 100,
-                  height: MediaQuery.of(context).size.height * 50 / 100,
+                  width: MediaQuery.of(context).size.width * 70 / 100,
+                  height: MediaQuery.of(context).size.height * 40 / 100,
                   decoration: BoxDecoration(
-                      color: Colors.white70,
+                      color: Colors.white, // subtle background
                       borderRadius: BorderRadius.circular(35)),
                 ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 70),
+            Center(
               child: Hero(tag: data!.id!, child: Image.asset(data!.img!)),
             ),
             Positioned(
-              bottom: 0,
+              bottom: 20,
+              left: 0,
+              right: 0,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -62,8 +72,8 @@ class DataBody extends StatelessWidget {
                     child: Text(
                       data!.name!,
                       style: TextStyle(
-                          color: Colors.pink,
-                          fontSize: 70,
+                          color: Colors.black87,
+                          fontSize: 40,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -71,8 +81,8 @@ class DataBody extends StatelessWidget {
                   Text(
                     "\$${data!.prise.toString()}",
                     style: TextStyle(
-                        color: Colors.red,
-                        fontSize: 40,
+                        color: Colors.green,
+                        fontSize: 30,
                         fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 10),
