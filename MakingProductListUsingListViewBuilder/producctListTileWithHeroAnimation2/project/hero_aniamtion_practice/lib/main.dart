@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hero_aniamtion_practice/list_class.dart';
+import 'package:hero_aniamtion_practice/list_content.dart';
 import 'package:hero_aniamtion_practice/listview.dart';
 
 void main() {
@@ -33,50 +33,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListviewContent(contact: contacts),
+      body: ListviewContent(contact: Listcontacts),
     );
   }
-
-  final List<Contact> contacts = [
-    Contact(
-        description: "Zong SIM",
-        name: "Zong",
-        photoAdress:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHcVS4aaXBU24o_2LptHsnAkKyq_ulGIofSsr_0Ac8g&s&ec=72940543"),
-    Contact(
-        description: "Jazz SIM",
-        name: "Zong",
-        photoAdress:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHcVS4aaXBU24o_2LptHsnAkKyq_ulGIofSsr_0Ac8g&s&ec=72940543"),
-    Contact(
-        description: "Telenor SIM",
-        name: "Zong",
-        photoAdress:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHcVS4aaXBU24o_2LptHsnAkKyq_ulGIofSsr_0Ac8g&s&ec=72940543"),
-    Contact(
-        description: "Ufone SIM",
-        name: "Zong",
-        photoAdress:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHcVS4aaXBU24o_2LptHsnAkKyq_ulGIofSsr_0Ac8g&s&ec=72940543"),
-    Contact(
-        description: "Zong SIM ",
-        name: "Zong",
-        photoAdress:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHcVS4aaXBU24o_2LptHsnAkKyq_ulGIofSsr_0Ac8g&s&ec=72940543"),
-    Contact(
-        description: "Jazz SIM ",
-        name: "Zong",
-        photoAdress:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHcVS4aaXBU24o_2LptHsnAkKyq_ulGIofSsr_0Ac8g&s&ec=72940543"),
-    Contact(
-        description: "Telenor SIM ",
-        name: "Zong",
-        photoAdress:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHcVS4aaXBU24o_2LptHsnAkKyq_ulGIofSsr_0Ac8g&s&ec=72940543"),
-    Contact(
-        description: "Ufone SIM ",
-        name: "Zong",
-        photoAdress:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTHcVS4aaXBU24o_2LptHsnAkKyq_ulGIofSsr_0Ac8g&s&ec=72940543"),
-  ];
 }
