@@ -1,3 +1,4 @@
+import 'package:actual_usage_navigation1/navigation_Page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,13 +18,15 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      onGenerateRoute: onGenerateRoute,
+      initialRoute: MyHomePage.pageName,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-  static const String pageName = '/home';
+  static const String pageName = '/';
 
   final String title;
 
