@@ -24,8 +24,8 @@ class ListTileContent extends StatelessWidget {
               pageBuilder: (context, animation, secondaryAnimation) =>
                   const Detailspage(),
               settings: RouteSettings(arguments: contact),
-              transitionDuration: const Duration(milliseconds: 500),
-              reverseTransitionDuration: const Duration(milliseconds: 500),
+              transitionDuration: const Duration(seconds: 1),
+              reverseTransitionDuration: const Duration(seconds: 1),
             ),
           );
         });

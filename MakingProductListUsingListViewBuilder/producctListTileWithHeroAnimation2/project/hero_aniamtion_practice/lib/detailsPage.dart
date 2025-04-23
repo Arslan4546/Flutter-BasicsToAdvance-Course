@@ -7,31 +7,22 @@ class Detailspage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var contact = ModalRoute.of(context)!.settings.arguments as Contact;
-    return Column(
-      children: [
-        const SizedBox(
-          height: 20,
-        ),
-        Hero(
-          tag: contact.name,
-          child: CircleAvatar(
-            backgroundImage: AssetImage(contact.photoAdress),
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const SizedBox(
+            height: 20,
           ),
-        ),
-        Text(
-          contact.name,
-          style: const TextStyle(fontSize: 30),
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Back'),
-        ),
-      ],
+          Hero(
+            tag: contact.name,
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(contact.photoAdress),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
