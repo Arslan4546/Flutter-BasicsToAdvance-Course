@@ -15,6 +15,9 @@ class ListTileContent extends StatelessWidget {
           child: CircleAvatar(
             backgroundImage: NetworkImage(contact.photoAdress),
           ),
+          flightShuttleBuilder: (flightContext, animation, flightDirection,
+                  fromHeroContext, toHeroContext) =>
+              flightContext.widget,
         ),
         title: Text(contact.name),
         subtitle: Text(contact.description),
