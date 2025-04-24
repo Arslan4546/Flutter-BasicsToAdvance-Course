@@ -11,14 +11,24 @@ class ListTileContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
         leading: Hero(
-          tag: contact.name,
-          child: CircleAvatar(
-            backgroundImage: NetworkImage(contact.photoAdress),
-          ),
-          flightShuttleBuilder: (flightContext, animation, flightDirection,
-                  fromHeroContext, toHeroContext) =>
-              flightContext.widget,
-        ),
+            tag: contact.name,
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(contact.photoAdress),
+            ),
+
+            /// basically shutter builder ye kam krta hai k ager koi cheez jo k hero widget sy move kr rhi hia uss mai ager ko additionally add kr rhy ho to uss ko ye animation deta hai
+            ///
+            flightShuttleBuilder: (flightContext, animation, flightDirection,
+                fromHeroContext, toHeroContext) {
+              return RotationTransition(
+                  turns: animation.drive(
+                    Tween(begin: 0.5, end: 1),
+                  ),
+                  child: ScaleTransition(
+                    scale: animation.drive(Tween(begin: 0.5, end: 1)),
+                    child: toHeroContext.widget,
+                  ));
+            }),
         title: Text(contact.name),
         subtitle: Text(contact.description),
         onTap: () {
