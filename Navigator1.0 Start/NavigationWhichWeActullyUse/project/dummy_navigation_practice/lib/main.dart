@@ -1,4 +1,6 @@
 import 'package:dummy_navigation_practice/first_page.dart';
+import 'package:dummy_navigation_practice/myNavigations.dart';
+import 'package:dummy_navigation_practice/second_Page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,20 +18,23 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      onGenerateRoute: Mynavigations.onGenerateRoute,
+      initialRoute: MyHomePage.pageName,
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-  static const String pageName = '/';
   final String title;
+  static const String pageName = '/';
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
+
+var data = " By-default data on the main page";
 
 class _MyHomePageState extends State<MyHomePage> {
   @override
@@ -37,33 +42,54 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          title: Text(widget.title),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[],
+            children: <Widget>[
+              Text(
+                data,
+              )
+            ],
           ),
         ),
-        floatingActionButton: const OverflowBar(
+        floatingActionButton: OverflowBar(
           children: [
             FloatingActionButton(
               onPressed: _incrementCounter,
               tooltip: 'Increment',
-              child: const Icon(Icons.back_hand),
+              child: Icon(Icons.back_hand),
+            ),
+            SizedBox(
+              width: 30,
             ),
             FloatingActionButton(
               onPressed: _decrementCounter,
               tooltip: 'Increment',
-              child: const Icon(Icons.front_hand),
+              child: Icon(Icons.front_hand),
             ),
           ],
         ) // This trailing comma makes auto-formatting nicer for build methods.
         );
   }
-}
 
-void _incrementCounter() {
-  Navigator.pushNamed(FirstPage.pageName, arguments: "Cas is best acedemy");
-}
+  void _incrementCounter() async {
+    var resultOfFirstPage = await Navigator.of(context).pushNamed(
+        FirstPage.pageName,
+        arguments: "Text from main page to first page");
+    setState(() {
+      data = resultOfFirstPage as String;
+    });
+  }
 
-void _decrementCounter() {}
+  void _decrementCounter() async {
+    var resultOfSecondPage = await Navigator.of(context).pushNamed(
+        SecondPage.pageName,
+        arguments: "Text form main page to second page");
+
+    setState(() {
+      data = resultOfSecondPage as String;
+    });
+  }
+}

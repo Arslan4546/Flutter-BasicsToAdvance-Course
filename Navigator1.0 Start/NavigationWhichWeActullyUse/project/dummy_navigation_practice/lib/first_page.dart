@@ -14,10 +14,13 @@ class FirstPage extends StatelessWidget {
           children: [
             Text(
               data,
-              style: Theme.of(context).primaryTextTheme.headlineLarge,
             ),
             ElevatedButton(
-                onPressed: () {}, child: Text("Go to the previous page "))
+                onPressed: () {
+                  Navigator.of(context)
+                      .pop("This is the text from the first page");
+                },
+                child: Text("Go to the previous page "))
           ],
         ),
       ),
