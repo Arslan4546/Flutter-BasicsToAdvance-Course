@@ -8,19 +8,14 @@ class Detailspage extends StatelessWidget {
   Widget build(BuildContext context) {
     var contact = ModalRoute.of(context)!.settings.arguments as Contact;
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Details Page'),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("exit")),
-            const SizedBox(
-              height: 20,
-            ),
             Hero(
               tag: contact.name,
               child: CircleAvatar(

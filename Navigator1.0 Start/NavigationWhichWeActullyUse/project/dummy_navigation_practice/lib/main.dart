@@ -61,13 +61,13 @@ class _MyHomePageState extends State<MyHomePage> {
               tooltip: 'Increment',
               child: Icon(Icons.back_hand),
             ),
-            SizedBox(
+           const  SizedBox(
               width: 30,
             ),
             FloatingActionButton(
               onPressed: _decrementCounter,
               tooltip: 'Increment',
-              child: Icon(Icons.front_hand),
+              child: const  Icon(Icons.front_hand),
             ),
           ],
         ) // This trailing comma makes auto-formatting nicer for build methods.

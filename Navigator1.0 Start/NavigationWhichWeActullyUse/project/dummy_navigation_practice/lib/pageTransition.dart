@@ -10,7 +10,7 @@ class FirstPageTransition extends PageRouteBuilder {
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               SlideTransition(
             position: animation
-                .drive(Tween<Offset>(begin: Offset(-1, 0), end: Offset.zero)),
+                .drive(Tween<Offset>(begin:const  Offset(-1, 0), end: Offset.zero)),
             child: child,
           ),
           settings: settings,
@@ -29,7 +29,7 @@ class SecondPageTransition extends PageRouteBuilder {
           transitionsBuilder: (context, animation, secondaryAnimation, child) =>
               SlideTransition(
             position: animation
-                .drive(Tween<Offset>(begin: Offset(0, 1), end: Offset.zero)),
+                .drive(Tween<Offset>(begin: const  Offset(0, 1), end: Offset.zero)),
             child: child,
           ),
         );
