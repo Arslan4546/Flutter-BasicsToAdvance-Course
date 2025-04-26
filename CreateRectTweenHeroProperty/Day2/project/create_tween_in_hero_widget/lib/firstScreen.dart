@@ -63,19 +63,6 @@ class FirstScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 50),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
-              decoration: BoxDecoration(
-                color: Colors.blue.shade50,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.blue.shade200),
-              ),
-              child: const Text(
-                'Watch the button slowly expand to cover the screen',
-                style: TextStyle(fontSize: 16, color: Colors.blue),
-              ),
-            ),
           ],
         ),
       ),
