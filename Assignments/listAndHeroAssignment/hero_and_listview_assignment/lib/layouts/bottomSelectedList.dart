@@ -17,8 +17,8 @@ class _BottomselectedlistState extends State<Bottomselectedlist> {
       alignment: Alignment.bottomCenter,
       child: CupertinoSlidingSegmentedControl(
         groupValue: selectedBrand,
-        thumbColor: Color(0xffD5BDAF),
-        padding: EdgeInsets.all(6),
+        thumbColor: const Color(0xffD5BDAF),
+        padding: const EdgeInsets.all(6),
         onValueChanged: (value) {
           if (value != null) {
             setState(() {
@@ -28,7 +28,7 @@ class _BottomselectedlistState extends State<Bottomselectedlist> {
               } else {
                 selectedBrand = value;
                 shoesList = ShoeModel.shoesList
-                    .where((shoe) => shoe.brand == value)
+                    .where((shoe) => shoe.brand == selectedBrand)
                     .toList();
               }
             });
