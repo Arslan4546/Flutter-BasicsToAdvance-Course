@@ -17,7 +17,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFF5EBE0),
+      backgroundColor: const Color(0xFFF5EBE0),
       body: Padding(
         padding: EdgeInsets.only(
           top: MediaQuery.viewPaddingOf(context).top + 20,
