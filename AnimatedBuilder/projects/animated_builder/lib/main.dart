@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart'
+import 'package:flutter/material.dart';
 
 void main() {
   runApp(const MyApp());
@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage>
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             AnimatedBuilder(
-              animation: _animation,
+              animation: _controller,
               builder: (context, child) => Transform.rotate(
                 angle: _animation.value,
                 child: Transform.scale(
@@ -80,10 +80,15 @@ class _MyHomePageState extends State<MyHomePage>
               ),
               child: Image.network(src),
             ),
-          
             ElevatedButton(
               onPressed: () {
-                _controller.forward();
+                setState(() {
+                  if (_controller.isCompleted) {
+                    _controller.stop();
+                  } else {
+                    _controller.repeat();
+                  }
+                });
               },
               child: const Text('Play'),
             ),
