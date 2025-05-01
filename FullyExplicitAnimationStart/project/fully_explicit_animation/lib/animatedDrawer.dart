@@ -68,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double panelHeight = screenHeight * 0.6; // 60% of screen height
+    double panelHeight = screenHeight * 0.3; // 60% of screen height
 
     return Scaffold(
       appBar: AppBar(title: const Text('Sliding Drawer Panel')),
@@ -109,30 +109,6 @@ class _HomeScreenState extends State<HomeScreen>
                       ),
                       boxShadow: [
                         BoxShadow(color: Colors.black26, blurRadius: 10),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        // Drag Handle
-                        Container(
-                          margin: const EdgeInsets.symmetric(vertical: 10),
-                          width: 50,
-                          height: 5,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[400],
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-
-                        // Drawer Content
-                        const Expanded(
-                          child: Center(
-                            child: Text(
-                              'This is the drawer panel',
-                              style: TextStyle(fontSize: 18),
-                            ),
-                          ),
-                        ),
                       ],
                     ),
                   ),
