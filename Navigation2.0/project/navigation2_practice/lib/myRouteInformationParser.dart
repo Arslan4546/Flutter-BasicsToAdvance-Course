@@ -17,6 +17,6 @@ class MyrouteInformationParser extends RouteInformationParser<RouteSettings> {
 
   @override
   RouteInformation? restoreRouteInformation(RouteSettings configuration) {
-    return RouteInformation(uri: Uri.parse(configuration.name!));
+    return RouteInformation(uri: Uri.tryParse(configuration.name!));
   }
 }

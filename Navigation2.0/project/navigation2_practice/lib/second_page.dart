@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigation2_practice/myRouterDelegate.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({super.key});
@@ -15,7 +16,7 @@ class SecondPage extends StatelessWidget {
             Text('This is the Second page!'),
             ElevatedButton(
               onPressed: () {
-                Navigator.pop(context);
+                MyRouterDelegate.of(context).pop();
               },
               child: Text('Go Back'),
             ),
