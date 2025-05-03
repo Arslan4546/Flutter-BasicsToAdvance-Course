@@ -6,7 +6,7 @@ void main() {
 }
 
 class FlipCardDemo extends StatefulWidget {
-  const FlipCardDemo({Key? key}) : super(key: key);
+  const FlipCardDemo({super.key});
 
   @override
   State<FlipCardDemo> createState() => _FlipCardDemoState();
