@@ -12,7 +12,7 @@ class Mypagebuilder {
         settings.name == '/second';
   }
 
-// this is the fucntion for routing the main to exact location
+// this is the fucntion for routing the exact location
   static Page buildPage(RouteSettings settings) {
     switch (settings.name) {
       case '/main':
