@@ -8,7 +8,7 @@ class CircleRectTween extends RectTween {
   Rect lerp(double t) {
     final adjustedT = Curves.easeOut.transform(t);
 
-    final beginCenter = begin!.center;
+    final beginCenter = begin!.bottomRight;
 
     final maxRadius =
         end!.width > end!.height ? end!.width * 1.5 : end!.height * 1.5;
@@ -17,6 +17,9 @@ class CircleRectTween extends RectTween {
 
     final radius = buttonRadius + (maxRadius - buttonRadius) * adjustedT;
 
-    return Rect.fromCircle(center: beginCenter, radius: radius);
+    return Rect.fromCircle(
+      center: beginCenter,
+      radius: radius,
+    );
   }
 }
