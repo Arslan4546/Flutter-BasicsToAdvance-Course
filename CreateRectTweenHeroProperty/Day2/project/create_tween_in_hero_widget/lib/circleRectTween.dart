@@ -6,7 +6,7 @@ class CircleRectTween extends RectTween {
 
   @override
   Rect lerp(double t) {
-    final adjustedT = Curves.easeOut.transform(t);
+    final adjustedT = Curves.easeInOutQuart.transform(t);
 
     final beginCenter = begin!.bottomRight;
 
