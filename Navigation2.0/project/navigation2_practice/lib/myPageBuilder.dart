@@ -23,7 +23,9 @@ class Mypagebuilder {
         );
       case FirstPage.routeName:
         return MaterialPage(
-          child: const FirstPage(),
+          child: FirstPage(
+            data: settings.arguments as String,
+          ),
           arguments: settings.arguments,
           name: settings.name,
         );

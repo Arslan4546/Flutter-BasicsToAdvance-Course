@@ -6,23 +6,30 @@ class SecondPage extends StatelessWidget {
   static const String routeName = '/second';
   @override
   Widget build(BuildContext context) {
+    List<String> args =
+        ModalRoute.of(context)?.settings.arguments as List<String>;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Second Page'),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            const Text('This is the Second page!'),
-            ElevatedButton(
-              onPressed: () {
-                MyRouterDelegate.of(context).pop();
-              },
-              child: const Text('Go Back'),
-            ),
-          ],
+        appBar: AppBar(
+          title: const Text('Second Page'),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () {
+              MyRouterDelegate.of(context).pop();
+            },
+          ),
         ),
-      ),
-    );
+        body: Center(
+          child: ListView.builder(
+            itemBuilder: (context, index) => Container(
+              height: 100,
+              width: 100,
+              color: Colors.red,
+              child: Center(
+                child: Text(args[index]),
+              ),
+            ),
+            itemCount: args.length,
+          ),
+        ));
   }
 }

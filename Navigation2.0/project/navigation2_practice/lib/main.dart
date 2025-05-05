@@ -29,6 +29,24 @@ class MainPage extends StatelessWidget {
   static const String routeName = '/';
   @override
   Widget build(BuildContext context) {
+    List<String> args = [
+      "arslan ",
+      "ali",
+      "ahmed",
+      "zain",
+      "mannan",
+      "syed",
+      "ali",
+      "ahmed",
+      "zain",
+      "mannan",
+      "syed",
+      "ali",
+      "ahmed",
+      "zain",
+      "mannan",
+      "syed"
+    ];
     return Scaffold(
       appBar: AppBar(
         title: const Text('Main Page'),
@@ -40,15 +58,16 @@ class MainPage extends StatelessWidget {
             const Text('This is the main page!'),
             ElevatedButton(
               onPressed: () {
-                MyRouterDelegate.of(context)
-                    .push(const RouteSettings(name: FirstPage.routeName));
+                MyRouterDelegate.of(context).push(const RouteSettings(
+                    name: FirstPage.routeName, arguments: 'Hello'));
               },
               child: const Text('Go to First Page'),
             ),
             ElevatedButton(
               onPressed: () {
-                MyRouterDelegate.of(context)
-                    .push(const RouteSettings(name: SecondPage.routeName));
+                MyRouterDelegate.of(context).push(
+                  RouteSettings(name: SecondPage.routeName, arguments: args),
+                );
               },
               child: const Text('Go to Second Page'),
             ),
