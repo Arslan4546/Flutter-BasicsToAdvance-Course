@@ -12,16 +12,18 @@ class MyRouterDelegate extends RouterDelegate<RouteSettings>
     return delegate as MyRouterDelegate;
   }
 
-  List<RouteSettings> stack = [const RouteSettings(name: MainPage.routeName)];
+  final List<RouteSettings> _stack = [
+    const RouteSettings(name: MainPage.routeName)
+  ];
 
   push(RouteSettings settings) {
-    stack.add(settings);
+    _stack.add(settings);
     notifyListeners();
   }
 
   pop() {
-    if (stack.length > 1) {
-      stack.removeLast(); // remove last page from stack
+    if (_stack.length > 1) {
+      _stack.removeLast(); // remove last page from stack
       notifyListeners();
     }
   }
@@ -31,7 +33,7 @@ class MyRouterDelegate extends RouterDelegate<RouteSettings>
     return Navigator(
       key: navigatorKey,
       pages: [
-        for (RouteSettings settings in stack) Mypagebuilder.buildPage(settings)
+        for (RouteSettings settings in _stack) Mypagebuilder.buildPage(settings)
       ],
       // ignore: deprecated_member_use
       onPopPage: onPopPage,
@@ -39,8 +41,8 @@ class MyRouterDelegate extends RouterDelegate<RouteSettings>
   }
 
   @override
-  RouteSettings? get currentConfiguration => stack.isNotEmpty
-      ? stack.last
+  RouteSettings? get currentConfiguration => _stack.isNotEmpty
+      ? _stack.last
       : const RouteSettings(name: MainPage.routeName);
 
   @override
@@ -60,7 +62,7 @@ class MyRouterDelegate extends RouterDelegate<RouteSettings>
 
   @override
   Future<void> setNewRoutePath(RouteSettings configuration) {
-    stack
+    _stack
       ..clear()
       ..add(configuration);
     notifyListeners();
