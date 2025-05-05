@@ -7,12 +7,13 @@ class PageTransitionAnimation extends Page {
     required this.page,
     required String super.name,
     super.arguments,
-  }); // ✅ super constructor call
+    super.key,
+  });
 
   @override
   Route createRoute(BuildContext context) {
     return PageRouteBuilder(
-      settings: this, // ✅ Important for page-based navigation
+      settings: this,
       pageBuilder: (context, animation, secondaryAnimation) => page,
       transitionDuration: const Duration(seconds: 1),
       reverseTransitionDuration: const Duration(seconds: 1),
@@ -24,7 +25,14 @@ class PageTransitionAnimation extends Page {
               end: Offset.zero,
             ),
           ),
-          child: child,
+          child: RotationTransition(
+              turns: animation.drive(
+                Tween(
+                  begin: 0,
+                  end: 1,
+                ),
+              ),
+              child: child),
         );
       },
     );

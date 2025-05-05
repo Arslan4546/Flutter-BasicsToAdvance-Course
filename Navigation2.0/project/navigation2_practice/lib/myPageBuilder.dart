@@ -24,6 +24,7 @@ class Mypagebuilder {
         );
       case FirstPage.routeName:
         return PageTransitionAnimation(
+          key: ValueKey(settings.name),
           page: FirstPage(data: settings.arguments as String),
           name: settings.name!,
           arguments: settings.arguments,
