@@ -20,8 +20,8 @@ class MyRouterDelegate extends RouterDelegate<RouteSettings>
   }
 
   pop() {
-    if (stack.isNotEmpty) {
-      stack.remove(stack.last);
+    if (stack.length > 1) {
+      stack.removeLast(); // remove last page from stack
       notifyListeners();
     }
   }
