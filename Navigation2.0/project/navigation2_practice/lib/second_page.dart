@@ -8,17 +8,17 @@ class SecondPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Second Page'),
+        title: const Text('Second Page'),
       ),
       body: Center(
         child: Column(
           children: [
-            Text('This is the Second page!'),
+            const Text('This is the Second page!'),
             ElevatedButton(
               onPressed: () {
                 MyRouterDelegate.of(context).pop();
               },
-              child: Text('Go Back'),
+              child: const Text('Go Back'),
             ),
           ],
         ),

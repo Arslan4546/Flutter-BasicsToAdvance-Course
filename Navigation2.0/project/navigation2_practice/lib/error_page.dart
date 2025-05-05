@@ -7,17 +7,17 @@ class ErrorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Error Page'),
+        title: const Text('Error Page'),
       ),
       body: Center(
         child: Column(
           children: [
-            Text('This is the Error page!'),
+            const Text('This is the Error page!'),
             ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text('Go Back'),
+              child: const Text('Go Back'),
             ),
           ],
         ),

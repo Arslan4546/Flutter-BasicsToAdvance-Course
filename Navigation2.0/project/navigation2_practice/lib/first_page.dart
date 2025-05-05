@@ -8,17 +8,17 @@ class FirstPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('First Page'),
+        title: const Text('First Page'),
       ),
       body: Center(
         child: Column(
           children: [
-            Text('This is the first page!'),
+            const Text('This is the first page!'),
             ElevatedButton(
               onPressed: () {
                 MyRouterDelegate.of(context).pop();
               },
-              child: Text('Go Back'),
+              child: const Text('Go Back'),
             ),
           ],
         ),

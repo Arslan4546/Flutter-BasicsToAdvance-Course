@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
 
 class MainPage extends StatelessWidget {
   const MainPage({super.key});
-  static const String routeName = '/main';
+  static const String routeName = '/';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
