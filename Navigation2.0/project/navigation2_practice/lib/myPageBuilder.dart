@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:navigation2_practice/error_page.dart';
 import 'package:navigation2_practice/first_page.dart';
 import 'package:navigation2_practice/main.dart';
+import 'package:navigation2_practice/pageTransitionAnimation.dart';
 import 'package:navigation2_practice/second_page.dart';
 
 class Mypagebuilder {
@@ -22,13 +23,12 @@ class Mypagebuilder {
           name: settings.name,
         );
       case FirstPage.routeName:
-        return MaterialPage(
-          child: FirstPage(
-            data: settings.arguments as String,
-          ),
+        return PageTransitionAnimation(
+          page: FirstPage(data: settings.arguments as String),
+          name: settings.name!,
           arguments: settings.arguments,
-          name: settings.name,
         );
+
       case SecondPage.routeName:
         return MaterialPage(
           child: const SecondPage(),
