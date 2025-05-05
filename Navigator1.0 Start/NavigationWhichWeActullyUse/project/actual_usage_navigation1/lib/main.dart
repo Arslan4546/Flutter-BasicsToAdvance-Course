@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:actual_usage_navigation1/navigation_Page.dart';
 import 'package:actual_usage_navigation1/second_page.dart';
 import 'package:actual_usage_navigation1/third_page.dart';
@@ -43,12 +45,15 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String data = 'You have pushed the button this many times:';
-
-  void _incrementCounter() {
-    Navigator.of(context).pushNamed(
+  List<String> yourList = [];
+  void _incrementCounter() async {
+    List<String> myList = await Navigator.of(context).pushNamed(
       SecondPage.pageName,
       arguments: 'Pakistan Zindabad',
-    );
+    ) as List<String>;
+    setState(() {
+      yourList = myList;
+    });
   }
 
   @override
@@ -56,14 +61,21 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
+        title: Text(data),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(data),
-          ],
+        child: ListView.builder(
+          itemBuilder: (context, index) => Container(
+            height: 200,
+            width: 200,
+            color: Colors.red,
+            child: Center(
+                child: Text(
+              yourList[index],
+              style: TextStyle(color: Colors.white),
+            )),
+          ),
+          itemCount: yourList.length,
         ),
       ),
       floatingActionButton: OverflowBar(

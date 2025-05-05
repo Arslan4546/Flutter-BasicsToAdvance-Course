@@ -7,8 +7,29 @@ class SecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> myList = [
+      "Arslan ",
+      "Ali ",
+      "Hassan ",
+      "Tariq ",
+      "Saqib ",
+      "Awais ",
+      "Usama ",
+      "Ali ",
+      "Hassan ",
+      "Tariq ",
+      "Saqib ",
+      "Awais ",
+      "Usama ",
+      "Ali ",
+      "Hassan ",
+      "Tariq ",
+      "Saqib ",
+      "Awais ",
+      "Usama "
+    ];
     return Scaffold(
-      appBar: AppBar(title: Text('Second Page')),
+      appBar: AppBar(title: const Text('Second Page')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -16,9 +37,9 @@ class SecondPage extends StatelessWidget {
             Text(data, style: Theme.of(context).textTheme.headlineLarge),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pop(myList);
               },
-              child: Icon(Icons.close),
+              child: const Icon(Icons.close),
             ),
           ],
         ),
