@@ -5,6 +5,7 @@ import 'package:navigation2_practice/myPageBuilder.dart';
 
 class MyRouterDelegate extends RouterDelegate<RouteSettings>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
+  // This is the constructor for the MyRouterDelegate class.
   static MyRouterDelegate of(BuildContext context) {
     final delegate = Router.of(context).routerDelegate;
     assert(delegate is MyRouterDelegate);
@@ -47,8 +48,15 @@ class MyRouterDelegate extends RouterDelegate<RouteSettings>
     return setNewRoutePath(configuration);
   }
 
+  // @override
+  // GlobalKey<NavigatorState>? get navigatorKey => GlobalKey<NavigatorState>();
+
+// Page transition isn't triggering because you're using a new GlobalKey every time!
+//That creates a new GlobalKey every time build() is called, which resets the navigator state and breaks animations.
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+
   @override
-  GlobalKey<NavigatorState>? get navigatorKey => GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState> get navigatorKey => _navigatorKey;
 
   @override
   Future<void> setNewRoutePath(RouteSettings configuration) {
@@ -60,6 +68,13 @@ class MyRouterDelegate extends RouterDelegate<RouteSettings>
   }
 
   bool onPopPage(Route route, result) {
-    return !route.didPop(result);
+    if (!route.didPop(result)) return false;
+    pop(); // remove from stack
+    return true;
   }
+
+  // old code for onPopPage
+  // bool onPopPage(Route route, result) {
+  //   return !route.didPop(result);
+  // }
 }
