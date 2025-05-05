@@ -14,7 +14,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       );
     case SecondPage.pageName:
       return LeftSlidePageTransition(
-        page: SecondPage(data: settings.arguments as String),
+        page: SecondPage(dataList: settings.arguments as List<String>),
         settings: settings,
       );
     case ThirdPage.pageName:

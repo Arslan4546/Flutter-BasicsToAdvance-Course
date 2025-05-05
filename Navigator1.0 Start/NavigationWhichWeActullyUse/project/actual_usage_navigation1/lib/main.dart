@@ -45,11 +45,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String data = 'You have pushed the button this many times:';
-  List<String> yourList = [];
+  List<String> yourList = ["Arslan", "Ali", "Hassan", "Tariq", "Saqib"];
   void _incrementCounter() async {
     List<String> myList = await Navigator.of(context).pushNamed(
       SecondPage.pageName,
-      arguments: 'Pakistan Zindabad',
+      arguments: yourList,
     ) as List<String>;
     setState(() {
       yourList = myList;

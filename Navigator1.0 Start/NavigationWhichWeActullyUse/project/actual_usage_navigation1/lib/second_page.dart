@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SecondPage extends StatelessWidget {
-  const SecondPage({super.key, required this.data});
-  final String data;
+  const SecondPage({super.key, required this.dataList});
+  final List<String> dataList;
   static const String pageName = '/second_page';
 
   @override
@@ -29,19 +29,27 @@ class SecondPage extends StatelessWidget {
       "Usama "
     ];
     return Scaffold(
-      appBar: AppBar(title: const Text('Second Page')),
+      appBar: AppBar(
+        title: const Text('Second Page'),
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop(myList);
+            },
+            icon: const Icon(Icons.arrow_back)),
+      ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(data, style: Theme.of(context).textTheme.headlineLarge),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop(myList);
-              },
-              child: const Icon(Icons.close),
-            ),
-          ],
+        child: ListView.builder(
+          itemBuilder: (context, index) => Container(
+            height: 200,
+            width: 200,
+            color: Colors.red,
+            child: Center(
+                child: Text(
+              dataList[index],
+              style: TextStyle(color: Colors.white),
+            )),
+          ),
+          itemCount: dataList.length,
         ),
       ),
     );
