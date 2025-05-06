@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:api_practice/ModelClass.dart';
+// ignore: depend_on_referenced_packages
 import 'package:http/http.dart' as http;
 
 Future<List<Post>> fetchPosts() async {

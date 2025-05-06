@@ -8,9 +8,11 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'API Example',
       home: PostListScreen(),
     );
@@ -18,19 +20,21 @@ class MyApp extends StatelessWidget {
 }
 
 class PostListScreen extends StatelessWidget {
+  const PostListScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Posts')),
+      appBar: AppBar(title: const Text('Posts')),
       body: FutureBuilder<List<Post>>(
         future: fetchPosts(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('No posts found.'));
+            return const Center(child: Text('No posts found.'));
           }
 
           final posts = snapshot.data!;
