@@ -1,7 +1,6 @@
 import 'package:api_practice/ModelClass.dart';
 import 'package:api_practice/apiFunction.dart';
 import 'package:flutter/material.dart';
-import 'api_service.dart'; // contains fetchPosts()
 
 void main() {
   runApp(MyApp());
