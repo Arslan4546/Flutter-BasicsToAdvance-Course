@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:api_implementing/API_Service/api_model.dart';
-import 'package:flutter/widgets.dart';
+import 'package:api_implementing/API_Service/model_class.dart';
 import 'package:http/http.dart';
 
 // extension function for checking the response status code
@@ -12,7 +11,7 @@ extension ResponseExtension on Response {
 
 class ApiService {
   // Base URL for the API
-  static const String baseUrl = 'https://api.example.com';
+  static const String baseUrl = 'https://jsonplaceholder.typicode.com';
   // APi Url for implementing API
   static const String apiUrl = '/albums';
   // final url for implemting API
@@ -44,7 +43,7 @@ class ApiService {
   Future<bool> deleteAlbum(AlbumApi album) async {
     var response = await post(
       Uri.parse('$url/${album.id}'),
-      body: album.tojson(),
+      body: album.toJson(),
     );
     if (response.isSuccessfull) {
       return true;
@@ -55,7 +54,7 @@ class ApiService {
 
   // function for inserting the new album
   Future<bool> insertAlbum(AlbumApi album) async {
-    var response = await post(Uri.parse(url), body: album.tojson());
+    var response = await post(Uri.parse(url), body: album.toJson());
     if (response.isSuccessfull) {
       return true;
     } else {
@@ -67,7 +66,7 @@ class ApiService {
   Future<bool> updateAlbum(AlbumApi album) async {
     var response = await put(
       Uri.parse('$url/${album.id}'),
-      body: album.tojson(),
+      body: album.toJson(),
     );
     if (response.isSuccessfull) {
       return true;
