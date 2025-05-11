@@ -30,6 +30,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //
   Future<List<AlbumApi>>? _futureService;
   ApiService apiService = ApiService();
 
@@ -68,8 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: album.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    title: Text(album[index].id as String),
-
+                    title: Text(album[index].id),
                     subtitle: Text(album[index].title),
                   );
                 },
