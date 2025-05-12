@@ -1,6 +1,6 @@
-import 'package:api_implementing/API_Service/api_service.dart';
-import 'package:api_implementing/API_Service/model_class.dart';
 import 'package:flutter/material.dart';
+import 'API_Service/api_service.dart';
+import 'API_Service/model_class.dart';
 
 void main() {
   runApp(const MyApp());
@@ -8,21 +8,14 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return MaterialApp(home: const MyHomePage(title: 'Flutter API Demo'));
   }
 }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
   final String title;
 
   @override
@@ -30,54 +23,42 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  //
-  Future<List<AlbumApi>>? _futureAlbum;
-  ApiService apiService = ApiService();
+  final ApiService apiService = ApiService();
+  late Future<List<AlbumApi>> _futureAlbums;
 
   @override
   void initState() {
     super.initState();
-    _futureAlbum = apiService.getAbums();
+    _futureAlbums = apiService.getAbums();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+      appBar: AppBar(title: Text(widget.title)),
+      body: FutureBuilder<List<AlbumApi>>(
+        future: _futureAlbums,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text('No albums found.'));
+          } else {
+            final albums = snapshot.data!;
+            return ListView.builder(
+              itemCount: albums.length,
+              itemBuilder: (context, index) {
+                return ListTile(
+                  title: Text(albums[index].title),
+                  subtitle: Text('ID: ${albums[index].id}'),
+                );
+              },
+            );
+          }
+        },
       ),
-      body: Center(
-        child: FutureBuilder(
-          future: _futureAlbum,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.none) {
-              return ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    //_futureService = apiService.getAbums();
-                  });
-                },
-                child: Text("Error While Fetching the API data "),
-              );
-            } else if (snapshot.hasData) {
-              final album = snapshot.data;
-              return ListView.builder(
-                itemCount: album!.length,
-                itemBuilder: (context, index) {
-                  return ListTile(
-                    title: Text(album[index].id),
-                    subtitle: Text(album[index].title),
-                  );
-                },
-              );
-            } else {
-              return CircularProgressIndicator();
-            }
-          },
-        ),
-      ),
-
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

@@ -1,37 +1,38 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 class AlbumApi {
   final String title;
-  final String id;
+  final int id;
+
   AlbumApi({required this.title, required this.id});
 
-  AlbumApi copyWith({String? title, String? id}) {
+  AlbumApi copyWith({String? title, int? id}) {
     return AlbumApi(title: title ?? this.title, id: id ?? this.id);
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{'title': title, 'id': id};
+    return {'title': title, 'id': id};
   }
 
   factory AlbumApi.fromMap(Map<String, dynamic> map) {
-    return AlbumApi(title: map['title'] as String, id: map['id'] as String);
+    return AlbumApi(
+      title: map['title'] as String,
+      id: map['id'] is int ? map['id'] : int.parse(map['id'].toString()),
+    );
   }
 
   String toJson() => json.encode(toMap());
 
   factory AlbumApi.fromJson(String source) =>
-      AlbumApi.fromMap(json.decode(source) as Map<String, dynamic>);
+      AlbumApi.fromMap(json.decode(source));
 
   @override
   String toString() => 'AlbumApi(title: $title, id: $id)';
 
   @override
-  bool operator ==(covariant AlbumApi other) {
-    if (identical(this, other)) return true;
-
-    return other.title == title && other.id == id;
-  }
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is AlbumApi && title == other.title && id == other.id;
 
   @override
   int get hashCode => title.hashCode ^ id.hashCode;
