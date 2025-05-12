@@ -22,7 +22,7 @@ class ApiService {
     var response = await get(Uri.parse(url));
     if (response.isSuccessfull) {
       List jsonList = jsonDecode(response.body);
-      return jsonList.map((map) => AlbumApi.fromJson(map)).toList();
+      return jsonList.map((map) => AlbumApi.fromMap(map)).toList();
     } else {
       throw Exception('Failed to load albums : ${response.statusCode}');
     }

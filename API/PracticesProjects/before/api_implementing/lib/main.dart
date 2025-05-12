@@ -31,14 +31,13 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   //
-  Future<List<AlbumApi>>? _futureService;
+  Future<List<AlbumApi>>? _futureAlbum;
   ApiService apiService = ApiService();
 
   @override
   void initState() {
     super.initState();
-
-    // _futureService = apiService.getAbums();
+    _futureAlbum = apiService.getAbums();
   }
 
   @override
@@ -49,24 +48,21 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: FutureBuilder(
-          future: _futureService,
+          future: _futureAlbum,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.none) {
               return ElevatedButton(
                 onPressed: () {
                   setState(() {
-                    _futureService = apiService.getAbums();
+                    //_futureService = apiService.getAbums();
                   });
                 },
                 child: Text("Error While Fetching the API data "),
               );
-            } else if (snapshot.connectionState == ConnectionState.active ||
-                snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
-            } else {
-              final album = snapshot.data!;
+            } else if (snapshot.hasData) {
+              final album = snapshot.data;
               return ListView.builder(
-                itemCount: album.length,
+                itemCount: album!.length,
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(album[index].id),
@@ -74,6 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               );
+            } else {
+              return CircularProgressIndicator();
             }
           },
         ),

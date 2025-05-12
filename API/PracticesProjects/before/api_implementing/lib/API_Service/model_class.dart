@@ -3,10 +3,10 @@ import 'dart:convert';
 
 class AlbumApi {
   final String title;
-  final int id;
+  final String id;
   AlbumApi({required this.title, required this.id});
 
-  AlbumApi copyWith({String? title, int? id}) {
+  AlbumApi copyWith({String? title, String? id}) {
     return AlbumApi(title: title ?? this.title, id: id ?? this.id);
   }
 
@@ -15,7 +15,7 @@ class AlbumApi {
   }
 
   factory AlbumApi.fromMap(Map<String, dynamic> map) {
-    return AlbumApi(title: map['title'] as String, id: map['id'] as int);
+    return AlbumApi(title: map['title'] as String, id: map['id'] as String);
   }
 
   String toJson() => json.encode(toMap());
