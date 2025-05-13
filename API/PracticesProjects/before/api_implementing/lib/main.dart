@@ -1,3 +1,4 @@
+import 'package:api_implementing/Layout/listviewbuilder.dart';
 import 'package:flutter/material.dart';
 import 'API_Service/api_service.dart';
 import 'API_Service/model_class.dart';
@@ -25,19 +26,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final ApiService apiService = ApiService();
-  late Future<UserApi>? _futureAlbums;
+  //late Future<UserApi>? _futureAlbums;
+  late Future<List<UserApi>> _futureAlbums;
 
   @override
   void initState() {
     super.initState();
-    _futureAlbums = apiService.getAlbumById(5);
+    // _futureAlbums = apiService.getAlbumById(5);
+    _futureAlbums = apiService.getAlbums();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
-      body: FutureBuilder<UserApi>(
+      body: FutureBuilder<List<UserApi>>(
         future: _futureAlbums,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -47,9 +50,11 @@ class _MyHomePageState extends State<MyHomePage> {
           } else if (!snapshot.hasData) {
             return const Center(child: Text('No albums found.'));
           } else {
-            final users = snapshot.data;
+            return ListviewbuilderWidget(userList: snapshot.data!);
+            // this is for fetcing using just single id
+            // return Text(users!.name);
 
-            return Text(users!.name);
+            // this is the manual calling api
             // return ListView.builder(
             //   itemCount: users!.length,
             //   itemBuilder: (context, index) {
