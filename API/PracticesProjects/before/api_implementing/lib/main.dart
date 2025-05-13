@@ -24,7 +24,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final ApiService apiService = ApiService();
-  late Future<List<AlbumApi>> _futureAlbums;
+  late Future<List<UserApi>> _futureAlbums;
 
   @override
   void initState() {
@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
-      body: FutureBuilder<List<AlbumApi>>(
+      body: FutureBuilder<List<UserApi>>(
         future: _futureAlbums,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -46,13 +46,24 @@ class _MyHomePageState extends State<MyHomePage> {
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(child: Text('No albums found.'));
           } else {
-            final albums = snapshot.data!;
+            final users = snapshot.data!;
             return ListView.builder(
-              itemCount: albums.length,
+              itemCount: users.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(albums[index].title),
-                  subtitle: Text('ID: ${albums[index].id}'),
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SizedBox(
+                    height: 300,
+                    width: double.infinity,
+                    child: Column(
+                      children: [
+                        Text(users[index].name),
+                        Text(users[index].email),
+                        Text(users[index].address),
+                        Text(users[index].companyName),
+                      ],
+                    ),
+                  ),
                 );
               },
             );
