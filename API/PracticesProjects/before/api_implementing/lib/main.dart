@@ -24,7 +24,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final ApiService apiService = ApiService();
-  late Future<List<UserApi>> _futureAlbums;
+  late Future<List<UserApi>>? _futureAlbums;
 
   @override
   void initState() {
@@ -46,9 +46,9 @@ class _MyHomePageState extends State<MyHomePage> {
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
             return const Center(child: Text('No albums found.'));
           } else {
-            final users = snapshot.data!;
+            final users = snapshot.data;
             return ListView.builder(
-              itemCount: users.length,
+              itemCount: users!.length,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),

@@ -13,65 +13,65 @@ class ApiService {
   // Base URL for the API
   static const String baseUrl = 'https://jsonplaceholder.typicode.com';
   // APi Url for implementing API
-  static const String apiUrl = '/albums';
+  static const String apiUrl = '/users';
   // final url for implemting API
   String get url => baseUrl + apiUrl;
 
   // Funciton for getting List of Map from the API
-  Future<List<AlbumApi>> getAbums() async {
+  Future<List<UserApi>> getAbums() async {
     var response = await get(Uri.parse(url));
     if (response.isSuccessfull) {
       List jsonList = jsonDecode(response.body);
-      return jsonList.map((map) => AlbumApi.fromMap(map)).toList();
+      return jsonList.map((map) => UserApi.fromMap(map)).toList();
     } else {
       throw Exception('Failed to load albums : ${response.statusCode}');
     }
   }
 
   // Function for getting single entery by giving just id
-  Future<AlbumApi> getAlbumById(String id) async {
+  Future<UserApi> getAlbumById(String id) async {
     var response = await get(Uri.parse('$url/$id'));
     if (response.isSuccessfull) {
       Map<String, dynamic> map = jsonDecode(response.body);
-      return AlbumApi.fromMap(map);
+      return UserApi.fromMap(map);
     } else {
       throw Exception('Failed to load album : ${response.statusCode}');
     }
   }
 
   // function for deleting the album by id
-  Future<bool> deleteAlbum(AlbumApi album) async {
-    var response = await post(
-      Uri.parse('$url/${album.id}'),
-      body: album.toJson(),
-    );
-    if (response.isSuccessfull) {
-      return true;
-    } else {
-      throw Exception('Failed to delete album : ${response.statusCode}');
-    }
-  }
+  // Future<bool> deleteAlbum(AlbumApi album) async {
+  //   var response = await delete(
+  //     Uri.parse('$url/${album.id}'),
+  //     body: album.toJson(),
+  //   );
+  //   if (response.isSuccessfull) {
+  //     return true;
+  //   } else {
+  //     throw Exception('Failed to delete album : ${response.statusCode}');
+  //   }
+  // }
 
   // function for inserting the new album
-  Future<bool> insertAlbum(AlbumApi album) async {
-    var response = await post(Uri.parse(url), body: album.toJson());
-    if (response.isSuccessfull) {
-      return true;
-    } else {
-      throw Exception('Failed to delete album : ${response.statusCode}');
-    }
-  }
+  // Future<bool> insertAlbum(AlbumApi album) async {
+  //   var response = await post(Uri.parse(url), body: album.toJson());
+  //   if (response.isSuccessfull) {
+  //     return true;
+  //   } else {
+  //     throw Exception('Failed to delete album : ${response.statusCode}');
+  //   }
+  // }
 
   // function for updating the album by id
-  Future<bool> updateAlbum(AlbumApi album) async {
-    var response = await put(
-      Uri.parse('$url/${album.id}'),
-      body: album.toJson(),
-    );
-    if (response.isSuccessfull) {
-      return true;
-    } else {
-      throw Exception('Failed to delete album : ${response.statusCode}');
-    }
-  }
+  // Future<bool> updateAlbum(AlbumApi album) async {
+  //   var response = await put(
+  //     Uri.parse('$url/${album.id}'),
+  //     body: album.toJson(),
+  //   );
+  //   if (response.isSuccessfull) {
+  //     return true;
+  //   } else {
+  //     throw Exception('Failed to delete album : ${response.statusCode}');
+  //   }
+  // }
 }
