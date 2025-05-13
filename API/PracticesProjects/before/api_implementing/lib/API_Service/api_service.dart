@@ -18,7 +18,7 @@ class ApiService {
   String get url => baseUrl + apiUrl;
 
   // Funciton for getting List of Map from the API
-  Future<List<UserApi>> getAbums() async {
+  Future<List<UserApi>> getAlbums() async {
     var response = await get(Uri.parse(url));
     if (response.isSuccessfull) {
       List jsonList = jsonDecode(response.body);
