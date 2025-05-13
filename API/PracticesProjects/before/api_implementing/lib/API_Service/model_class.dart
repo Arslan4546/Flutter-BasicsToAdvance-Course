@@ -1,4 +1,5 @@
 class UserApi {
+  final int id;
   final String name;
   final String email;
   final String companyName;
@@ -9,6 +10,7 @@ class UserApi {
     required this.email,
     required this.companyName,
     required this.address,
+    required this.id,
   });
 
   factory UserApi.fromMap(Map<String, dynamic> map) {
@@ -16,6 +18,7 @@ class UserApi {
     final company = map['company'];
 
     return UserApi(
+      id: map["id"] ?? "",
       name: map['name'] ?? '',
       email: map['email'] ?? '',
       address: '${address['street']}, ${address['city']}',

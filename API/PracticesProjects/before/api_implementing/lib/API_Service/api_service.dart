@@ -29,7 +29,7 @@ class ApiService {
   }
 
   // Function for getting single entery by giving just id
-  Future<UserApi> getAlbumById(String id) async {
+  Future<UserApi> getAlbumById(int id) async {
     var response = await get(Uri.parse('$url/$id'));
     if (response.isSuccessfull) {
       Map<String, dynamic> map = jsonDecode(response.body);
