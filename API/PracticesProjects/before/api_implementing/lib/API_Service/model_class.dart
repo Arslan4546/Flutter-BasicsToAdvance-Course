@@ -1,39 +1,76 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class AlbumApi {
-  final String title;
-  final int id;
+class UserApi {
+  final String name;
+  final String email;
+  final String companyName;
+  final String address;
 
-  AlbumApi({required this.title, required this.id});
+  UserApi({
+    required this.name,
+    required this.email,
+    required this.companyName,
+    required this.address,
+  });
 
-  AlbumApi copyWith({String? title, int? id}) {
-    return AlbumApi(title: title ?? this.title, id: id ?? this.id);
+  UserApi copyWith({
+    String? name,
+    String? email,
+    String? companyName,
+    String? address,
+  }) {
+    return UserApi(
+      name: name ?? this.name,
+      email: email ?? this.email,
+      companyName: companyName ?? this.companyName,
+      address: address ?? this.address,
+    );
   }
 
   Map<String, dynamic> toMap() {
-    return {'title': title, 'id': id};
+    return <String, dynamic>{
+      'name': name,
+      'email': email,
+      'companyName': companyName,
+      'address': address,
+    };
   }
 
-  factory AlbumApi.fromMap(Map<String, dynamic> map) {
-    return AlbumApi(
-      title: map['title'] as String,
-      id: map['id'] is int ? map['id'] : int.parse(map['id'].toString()),
+  factory UserApi.fromMap(Map<String, dynamic> map) {
+    return UserApi(
+      name: map['name'] as String,
+      email: map['email'] as String,
+      companyName: map['companyName'] as String,
+      address: map['address'] as String,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory AlbumApi.fromJson(String source) =>
-      AlbumApi.fromMap(json.decode(source));
+  factory UserApi.fromJson(String source) =>
+      UserApi.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
-  String toString() => 'AlbumApi(title: $title, id: $id)';
+  String toString() {
+    return 'AlbumApi(name: $name, email: $email, companyName: $companyName, address: $address)';
+  }
 
   @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is AlbumApi && title == other.title && id == other.id;
+  bool operator ==(covariant UserApi other) {
+    if (identical(this, other)) return true;
+
+    return other.name == name &&
+        other.email == email &&
+        other.companyName == companyName &&
+        other.address == address;
+  }
 
   @override
-  int get hashCode => title.hashCode ^ id.hashCode;
+  int get hashCode {
+    return name.hashCode ^
+        email.hashCode ^
+        companyName.hashCode ^
+        address.hashCode;
+  }
 }
