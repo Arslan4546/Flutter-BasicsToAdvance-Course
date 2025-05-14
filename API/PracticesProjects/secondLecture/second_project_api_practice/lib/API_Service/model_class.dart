@@ -37,11 +37,14 @@ class UserAPIModel {
   }
 
   factory UserAPIModel.fromMap(Map<String, dynamic> map) {
+    final location = map['address'];
+    final company = map['company'];
+
     return UserAPIModel(
-      id: map['id'] as int,
-      name: map['name'] as String,
-      companyName: map['companyName'] as String,
-      location: map['location'] as String,
+      id: map["id"] ?? "",
+      name: map['name'] ?? '',
+      location: '${location['street']}, ${location['city']}',
+      companyName: company['name'] ?? '',
     );
   }
 
