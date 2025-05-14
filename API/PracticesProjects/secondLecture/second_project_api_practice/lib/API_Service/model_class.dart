@@ -1,25 +1,25 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class UerAPIModel {
+class UserAPIModel {
   final int id;
   final String name;
   final String companyName;
   final String location;
-  UerAPIModel({
+  UserAPIModel({
     required this.id,
     required this.name,
     required this.companyName,
     required this.location,
   });
 
-  UerAPIModel copyWith({
+  UserAPIModel copyWith({
     int? id,
     String? name,
     String? companyName,
     String? location,
   }) {
-    return UerAPIModel(
+    return UserAPIModel(
       id: id ?? this.id,
       name: name ?? this.name,
       companyName: companyName ?? this.companyName,
@@ -36,8 +36,8 @@ class UerAPIModel {
     };
   }
 
-  factory UerAPIModel.fromMap(Map<String, dynamic> map) {
-    return UerAPIModel(
+  factory UserAPIModel.fromMap(Map<String, dynamic> map) {
+    return UserAPIModel(
       id: map['id'] as int,
       name: map['name'] as String,
       companyName: map['companyName'] as String,
@@ -47,8 +47,8 @@ class UerAPIModel {
 
   String toJson() => json.encode(toMap());
 
-  factory UerAPIModel.fromJson(String source) =>
-      UerAPIModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory UserAPIModel.fromJson(String source) =>
+      UserAPIModel.fromMap(json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -56,7 +56,7 @@ class UerAPIModel {
   }
 
   @override
-  bool operator ==(covariant UerAPIModel other) {
+  bool operator ==(covariant UserAPIModel other) {
     if (identical(this, other)) return true;
 
     return other.id == id &&

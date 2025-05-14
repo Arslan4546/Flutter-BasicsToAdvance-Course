@@ -15,7 +15,7 @@ abstract class ApiService {
   // This is the resultant Variable url
   String get url => baseURl + apiURL;
 
-  // fetch API Function/ fetch API Function by Single ID
+  // fetch API Function / OR fetch API Function by Single ID
   Future<dynamic> fetchAPI({String? endPoint}) async {
     var response = await get(Uri.parse("$url$endPoint"));
     if (response.isSuccessfull) {
@@ -36,8 +36,8 @@ abstract class ApiService {
   }
 
   // delete API Function
-  Future<bool> deleteAPI(String endPoint, Map<String, dynamic>) async {
-    var response = await delete(Uri.parse("$url$endPoint"))
+  Future<bool> deleteAPI(String endPoint, Map<String, dynamic> map) async {
+    var response = await delete(Uri.parse("$url$endPoint"), body: map);
     return response.isSuccessfull;
   }
 }

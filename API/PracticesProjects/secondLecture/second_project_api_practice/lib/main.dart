@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:second_project_api_practice/API_Service/model_class.dart';
+import 'package:second_project_api_practice/API_Service/userAPI.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,12 +32,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  UserAPI userAPI = UserAPI();
+  Future<List<UserAPIModel>>? _userFutureData;
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    super.initState();
+    _userFutureData = userAPI.fetchUserAPI();
   }
 
   @override
@@ -47,22 +50,38 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        child: FutureBuilder(
+          future: _userFutureData,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final user = snapshot.data!;
+              return ListView.builder(
+                itemCount: user.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      height: 300,
+                      width: double.infinity,
+                      child: Column(
+                        children: [
+                          Text(user[index].name),
+                          Text(user[index].companyName),
+                          Text(user[index].location),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            } else if (snapshot.hasError) {
+              return Text("${snapshot.error}");
+            } else {
+              return CircularProgressIndicator();
+            }
+          },
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
