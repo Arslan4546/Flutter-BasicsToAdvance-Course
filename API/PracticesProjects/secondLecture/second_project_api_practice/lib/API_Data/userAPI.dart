@@ -16,7 +16,7 @@ class UserAPI extends ApiService {
   // fetch User APi Function By ID
 
   Future<UserAPIModel> fetchUserAPIById(String endPoint) async {
-    var data = await fetchAPI(endPoint: endPoint);
+    var data = await fetchSingleAPI(endPoint);
     return UserAPIModel.fromMap(data);
   }
 

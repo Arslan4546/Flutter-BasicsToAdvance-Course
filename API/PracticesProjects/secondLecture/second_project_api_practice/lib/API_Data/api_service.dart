@@ -15,9 +15,17 @@ abstract class ApiService {
   // This is the resultant Variable url
   String get url => baseURl + apiURL;
 
-  // fetch API Function / OR fetch API Function by Single ID
-  Future<dynamic> fetchAPI({String? endPoint}) async {
-    var response = await get(Uri.parse("$url$endPoint"));
+  // fetch API Function / OR
+  Future<dynamic> fetchAPI() async {
+    var response = await get(Uri.parse(url));
+    if (response.isSuccessfull) {
+      return jsonDecode(response.body);
+    }
+  }
+
+  // fetchSingleID API Function by Single ID
+  Future<dynamic> fetchSingleAPI(String endPoint) async {
+    var response = await get(Uri.parse("$url/$endPoint"));
     if (response.isSuccessfull) {
       return jsonDecode(response.body);
     }
