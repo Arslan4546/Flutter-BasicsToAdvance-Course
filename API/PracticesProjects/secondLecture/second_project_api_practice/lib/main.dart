@@ -68,9 +68,9 @@ class _MyHomePageState extends State<MyHomePage> {
                         width: double.infinity,
                         child: Column(
                           children: [
-                            Text(user[index].name),
-                            Text(user[index].companyName),
-                            Text(user[index].location),
+                            Text(" Name : ${user[index].name}"),
+                            Text(" Company : ${user[index].companyName}"),
+                            Text(" Location : ${user[index].location}"),
                           ],
                         ),
                       ),
