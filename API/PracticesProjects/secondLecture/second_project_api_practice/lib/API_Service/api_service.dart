@@ -9,7 +9,7 @@ extension ResponseStatus on Response {
 // class for API Service
 abstract class ApiService {
   // Making baseAPI Variable
-  static const String baseURl = "";
+  static const String baseURl = "https://jsonplaceholder.typicode.com";
   // abstract Variable apiURL
   String get apiURL;
   // This is the resultant Variable url
