@@ -1,5 +1,5 @@
-import 'package:second_project_api_practice/API_Service/api_service.dart';
-import 'package:second_project_api_practice/API_Service/model_class.dart';
+import 'package:second_project_api_practice/API_Data/api_service.dart';
+import 'package:second_project_api_practice/API_Data/model_class.dart';
 
 class UserAPI extends ApiService {
   // an overridden variable
