@@ -49,37 +49,40 @@ class _MyHomePageState extends State<MyHomePage> {
 
         title: Text(widget.title),
       ),
-      body: Center(
-        child: FutureBuilder(
-          future: _userFutureData,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              final user = snapshot.data!;
-              return ListView.builder(
-                itemCount: user.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SizedBox(
-                      height: 300,
-                      width: double.infinity,
-                      child: Column(
-                        children: [
-                          Text(user[index].name),
-                          Text(user[index].companyName),
-                          Text(user[index].location),
-                        ],
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: FutureBuilder(
+            future: _userFutureData,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final user = snapshot.data!;
+                return ListView.builder(
+                  itemCount: user.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SizedBox(
+                        height: 300,
+                        width: double.infinity,
+                        child: Column(
+                          children: [
+                            Text(user[index].name),
+                            Text(user[index].companyName),
+                            Text(user[index].location),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
-              );
-            } else if (snapshot.hasError) {
-              return Text("${snapshot.error}");
-            } else {
-              return CircularProgressIndicator();
-            }
-          },
+                    );
+                  },
+                );
+              } else if (snapshot.hasError) {
+                return Text("${snapshot.error}");
+              } else {
+                return CircularProgressIndicator();
+              }
+            },
+          ),
         ),
       ),
     );
