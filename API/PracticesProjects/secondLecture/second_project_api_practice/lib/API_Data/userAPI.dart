@@ -13,7 +13,7 @@ class UserAPI extends ApiService {
     return jsonList.map((map) => UserAPIModel.fromMap(map)).toList();
   }
 
-  // fetch User APi Function By ID
+  // fetch User APi Function By single ID
 
   Future<UserAPIModel> fetchUserAPIById(String endPoint) async {
     var data = await fetchSingleAPI(endPoint);
