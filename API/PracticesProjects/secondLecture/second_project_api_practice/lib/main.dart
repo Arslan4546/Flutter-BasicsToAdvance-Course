@@ -37,6 +37,21 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<List<UserAPIModel>>? _listOfuserFutureDat;
   Future<UserAPIModel>? _singleUserFutureData;
 
+  Future<void> _insertUserData() async {
+    UserAPIModel userAPIModel = UserAPIModel(
+      id: 5,
+      name: "Arslan",
+      companyName: "Marketox",
+      location: "BWP",
+    );
+    var isInserted = await userAPI.insertUserAPI(userAPIModel);
+    if (isInserted) {
+      print("Your data has been inserted ");
+    } else {
+      print("Your Data has not been inserted!");
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -49,9 +64,10 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-
         title: Text(widget.title),
+        leading: IconButton(onPressed: _insertUserData, icon: Icon(Icons.abc)),
       ),
+
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Center(
