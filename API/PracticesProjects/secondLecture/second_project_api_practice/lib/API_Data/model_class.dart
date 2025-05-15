@@ -29,7 +29,7 @@ class UserAPIModel {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'id': id,
+      'id': id.toString(),
       'name': name,
       'companyName': companyName,
       'location': location,

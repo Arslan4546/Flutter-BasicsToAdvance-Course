@@ -38,6 +38,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<UserAPIModel>? _singleUserFutureData;
 
   void _insertUserData() async {
+    // this is the data we give in the constructor to ad the data in the API
+    // you can perform the update api fucntion same as it is and delete fucntion is also same as it is
     UserAPIModel userAPIModel = UserAPIModel(
       id: 5,
       name: "Arslan",
@@ -59,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    _listOfuserFutureDat = userAPI.fetchUserAPI();
+    // _listOfuserFutureDat = userAPI.fetchUserAPI();
     _singleUserFutureData = userAPI.fetchUserAPIById("5");
   }
 
@@ -69,7 +71,13 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
-        leading: IconButton(onPressed: _insertUserData, icon: Icon(Icons.abc)),
+        leading: IconButton(
+          onPressed: () {
+            _insertUserData();
+            print("This fucntion is calling you!");
+          },
+          icon: Icon(Icons.abc),
+        ),
       ),
 
       body: Padding(

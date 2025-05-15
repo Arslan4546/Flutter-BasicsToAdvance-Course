@@ -39,13 +39,13 @@ abstract class ApiService {
 
   // update API Function
   Future<bool> updateAPI(String endPoint, Map<String, dynamic> map) async {
-    var response = await put(Uri.parse("$url$endPoint"), body: map);
+    var response = await put(Uri.parse("$url/$endPoint"), body: map);
     return response.isSuccessfull;
   }
 
   // delete API Function
   Future<bool> deleteAPI(String endPoint, Map<String, dynamic> map) async {
-    var response = await delete(Uri.parse("$url$endPoint"), body: map);
+    var response = await delete(Uri.parse("$url/$endPoint"), body: map);
     return response.isSuccessfull;
   }
 }

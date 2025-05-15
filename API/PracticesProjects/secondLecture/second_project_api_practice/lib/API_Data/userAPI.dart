@@ -27,11 +27,11 @@ class UserAPI extends ApiService {
 
   // update user Data API Fucntion
   Future<bool> updateUserAPI(UserAPIModel userAPIModel) async {
-    return updateAPI("/${userAPIModel.id}", userAPIModel.toMap());
+    return updateAPI("${userAPIModel.id}", userAPIModel.toMap());
   }
 
   // delete user Data API Fucntion
   Future<bool> deleteUserAPI(UserAPIModel userAPIModel) async {
-    return deleteAPI("/${userAPIModel.id}", userAPIModel.toMap());
+    return deleteAPI("${userAPIModel.id}", userAPIModel.toMap());
   }
 }
