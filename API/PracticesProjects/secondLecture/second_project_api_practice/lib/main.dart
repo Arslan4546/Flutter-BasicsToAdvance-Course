@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 final user = snapshot.data!;
-                return Container(child: Text(user.name));
+                return Center(child: Text(user.name));
                 // return ListView.builder(
                 //   itemCount: user.length,
                 //   itemBuilder: (context, index) {
