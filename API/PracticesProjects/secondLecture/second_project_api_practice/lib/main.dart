@@ -34,12 +34,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   UserAPI userAPI = UserAPI();
-  Future<List<UserAPIModel>>? _userFutureData;
+  Future<List<UserAPIModel>>? _listOfuserFutureDat;
+  Future<UserAPIModel>? _singleUserFutureData;
 
   @override
   void initState() {
     super.initState();
-    _userFutureData = userAPI.fetchUserAPI();
+    _listOfuserFutureDat = userAPI.fetchUserAPI();
+    _singleUserFutureData = userAPI.fetchUserAPIById("5");
   }
 
   @override
@@ -54,29 +56,30 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(8.0),
         child: Center(
           child: FutureBuilder(
-            future: _userFutureData,
+            future: _singleUserFutureData,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 final user = snapshot.data!;
-                return ListView.builder(
-                  itemCount: user.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        height: 100,
-                        width: double.infinity,
-                        child: Column(
-                          children: [
-                            Text(" Name : ${user[index].name}"),
-                            Text(" Company : ${user[index].companyName}"),
-                            Text(" Location : ${user[index].location}"),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                );
+                return Container(child: Text(user.name));
+                // return ListView.builder(
+                //   itemCount: user.length,
+                //   itemBuilder: (context, index) {
+                //     return Padding(
+                //       padding: const EdgeInsets.all(8.0),
+                //       child: SizedBox(
+                //         height: 100,
+                //         width: double.infinity,
+                //         child: Column(
+                //           children: [
+                //             Text(" Name : ${user[index].name}"),
+                //             Text(" Company : ${user[index].companyName}"),
+                //             Text(" Location : ${user[index].location}"),
+                //           ],
+                //         ),
+                //       ),
+                //     );
+                //   },
+                // );
               } else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
               } else {
