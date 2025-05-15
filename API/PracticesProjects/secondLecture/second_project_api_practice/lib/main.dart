@@ -37,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<List<UserAPIModel>>? _listOfuserFutureDat;
   Future<UserAPIModel>? _singleUserFutureData;
 
-  Future<void> _insertUserData() async {
+  void _insertUserData() async {
     UserAPIModel userAPIModel = UserAPIModel(
       id: 5,
       name: "Arslan",
@@ -46,9 +46,13 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     var isInserted = await userAPI.insertUserAPI(userAPIModel);
     if (isInserted) {
-      print("Your data has been inserted ");
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Your Data is inserted")));
     } else {
-      print("Your Data has not been inserted!");
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Your Data is not inserted")));
     }
   }
 
