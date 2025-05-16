@@ -13,7 +13,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   ProductApiProvider productApiProvider = ProductApiProvider();
   Future<List<ProductModel>>? _futureProductList;
-  Future<ProductModel>? _singleProduct;
+  //Future<ProductModel>? _singleProduct;
 
   @override
   void initState() {
