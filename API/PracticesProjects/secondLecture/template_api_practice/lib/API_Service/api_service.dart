@@ -8,7 +8,7 @@ extension ResponseExtension on Response {
 }
 
 abstract class ApiService {
-  static const baseURL = "";
+  static const baseURL = "https://dummyjson.com";
   String get apiURL;
   String get url => baseURL + apiURL;
 
