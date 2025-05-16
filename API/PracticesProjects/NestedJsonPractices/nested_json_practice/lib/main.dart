@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nested_json_practice/api_service.dart';
+import 'package:nested_json_practice/product_model.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,12 +30,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  Future<List<Product>>? _futureProductsList;
+  ApiService apiService = ApiService();
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    super.initState();
+    _futureProductsList = apiService.getProductAPI();
   }
 
   @override
@@ -45,21 +48,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        child: FutureBuilder(
+          future: _futureProductsList,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              final product = snapshot.data!;
+              return Text(product.);
+            } else {
+              return CircularProgressIndicator();
+            }
+          },
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
       ),
     );
   }
