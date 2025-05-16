@@ -7,7 +7,7 @@ class ProductApiProvider extends ApiService {
 
   // fetchProductAPI function
 
-  Future<List<ProductModel>> fetchProductData() async {
+  Future<List<ProductModel>> fetchProductAPI() async {
     List jsonList = await fetchAPI();
     return jsonList.map((map) => ProductModel.fromMap(map)).toList();
   }
