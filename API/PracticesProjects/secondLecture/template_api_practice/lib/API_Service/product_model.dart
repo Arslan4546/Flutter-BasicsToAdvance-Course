@@ -34,9 +34,9 @@ class ProductModel {
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
       id: map['id'] ?? 0,
-      title: map['title'] ?? "",
-      name: map['brand'] ?? "",
-      image: map['thumbnail'] ?? "",
+      title: map['title'] ?? 'No Title',
+      name: map['brand'] ?? 'Unknown Brand',
+      image: map['thumbnail'] ?? '', // fallback if image is null
     );
   }
 
