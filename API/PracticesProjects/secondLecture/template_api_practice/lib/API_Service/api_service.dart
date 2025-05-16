@@ -16,7 +16,8 @@ abstract class ApiService {
   Future<dynamic> fetchAPI() async {
     var response = await get(Uri.parse(url));
     if (response.isSuccessfull) {
-      return jsonDecode(response.body);
+      var data = jsonDecode(response.body);
+      return data["products"];
     }
   }
 
