@@ -10,7 +10,7 @@ class ListTileWidget extends StatelessWidget {
     return ListTile(
       subtitle: Text(products.name),
       title: Text(products.title),
-      leading: CircleAvatar(child: Text(products.image)),
+      leading: CircleAvatar(child: Text(products.image.toString())),
     );
   }
 }

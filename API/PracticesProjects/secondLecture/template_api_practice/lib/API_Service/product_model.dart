@@ -33,10 +33,10 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      id: map['id'],
-      title: map['title'],
-      name: map['brand'],
-      image: map['thumbnail'],
+      id: map['id'] ?? 0,
+      title: map['title'] ?? "",
+      name: map['brand'] ?? "",
+      image: map['thumbnail'] ?? "",
     );
   }
 
