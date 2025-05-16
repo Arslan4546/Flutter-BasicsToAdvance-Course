@@ -3,7 +3,7 @@ import 'package:template_api_practice/API_Service/product_model.dart';
 
 class ProductApiProvider extends ApiService {
   @override
-  String get apiURL => "/carts";
+  String get apiURL => "/products";
 
   // fetchProductAPI function
 
