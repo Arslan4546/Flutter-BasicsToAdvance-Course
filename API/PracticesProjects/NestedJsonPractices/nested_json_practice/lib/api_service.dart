@@ -8,7 +8,7 @@ class ApiService {
   Future<List<Product>> getProductAPI() async {
     var response = await get(Uri.parse(url));
     if (response.statusCode == 200) {
-      List jsonList = jsonDecode(response.body);
+      List jsonList = jsonDecode(response.body)["products"];
       return jsonList.map((e) => Product.fromMap(e)).toList();
     } else {
       throw Exception("failed");
