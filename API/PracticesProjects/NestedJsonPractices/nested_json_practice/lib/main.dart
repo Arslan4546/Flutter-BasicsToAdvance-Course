@@ -53,8 +53,11 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final product = snapshot.data!;
-              return Text(product.);
-            } else {
+              return Text(product[0].height.toString());
+            } else if (snapshot.hasError) {
+              return Text("Error: ${snapshot.error}");
+            }
+            {
               return CircularProgressIndicator();
             }
           },

@@ -9,7 +9,7 @@ class ApiService {
     var response = await get(Uri.parse(url));
     if (response.statusCode == 200) {
       List jsonList = jsonDecode(response.body);
-      return jsonList.map((e) => Product.fromJson(e)).toList();
+      return jsonList.map((e) => Product.fromMap(e)).toList();
     } else {
       throw Exception("failed");
     }
