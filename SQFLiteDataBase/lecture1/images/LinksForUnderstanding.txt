@@ -1,0 +1,15 @@
+--> For understanding the commands and flow of relational database
+https://www.sqlite.org/lang_createtable.html
+--> sqflite Package
+https://pub.dev/packages/sqflite
+--> hive Package
+https://pub.dev/packages/hive
+--> objectBox Package 
+https://pub.dev/packages/objectbox
+--> realm Package
+https://pub.dev/packages/realm
+--> Blog About Realm
+https://www.mongodb.com/blog/post/realm-now-part-atlas-platform
+--> on that day there will be a class about go_router 
+--> go_router covered in workshop.
+https://pub.dev/packages/go_router/example
