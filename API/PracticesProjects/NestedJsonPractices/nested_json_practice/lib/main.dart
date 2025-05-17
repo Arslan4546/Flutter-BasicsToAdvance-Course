@@ -52,7 +52,14 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final product = snapshot.data!;
-              return Text(product[0].height.toString());
+              return Column(
+                children: [
+                  Text(product[0].id.toString()),
+                  Text(product[0].title.toString()),
+                  Text(product[0].height.toString()),
+                  Text(product[0].description.toString()),
+                ],
+              );
             } else if (snapshot.hasError) {
               return Text("Error: ${snapshot.error}");
             }

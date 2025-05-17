@@ -65,10 +65,10 @@ class Product {
       id: map['id'] as int,
       title: map['title'] as String,
       description: map['description'] as String,
-      price: map['price'] as double,
-      rating: map['rating'] as double,
+      price: map['price'] ?? 0.0,
+      rating: map['rating'] ?? 0.0,
       images: List<String>.from((map['images'] as List<dynamic>)),
-      height: map['height'] as double,
+      height: map['height'] ?? 0.0,
       reviews:
           map['reviews'] != null
               ? List<Review>.from(
