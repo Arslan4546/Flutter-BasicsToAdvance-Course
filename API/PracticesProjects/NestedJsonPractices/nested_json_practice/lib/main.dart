@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-// this is a lot of i
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
