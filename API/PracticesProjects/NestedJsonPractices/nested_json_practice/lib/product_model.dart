@@ -68,7 +68,7 @@ class Product {
       price: map['price'] ?? 0.0,
       rating: map['rating'] ?? 0.0,
       images: List<String>.from((map['images'] as List<dynamic>)),
-      height: map['height'] ?? 0.0,
+      height: map["dimensions"]['height'] ?? 0.0,
       reviews:
           map['reviews'] != null
               ? List<Review>.from(
