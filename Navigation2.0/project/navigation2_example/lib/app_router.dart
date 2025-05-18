@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:navigation2_example/Screens/home_page.dart';
 import 'package:navigation2_example/Screens/sign_up_page.dart';
