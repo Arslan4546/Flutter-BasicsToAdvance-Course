@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class DbService {
   // Making Singelton
   // what is singelton and why we use it
