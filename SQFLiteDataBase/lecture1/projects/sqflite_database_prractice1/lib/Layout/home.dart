@@ -95,7 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   const SizedBox(height: 16),
                   TextFormField(
-                    controller: _emailController,
+                    controller: _phoneController,
                     decoration: const InputDecoration(
                       labelText: 'phone',
                       border: OutlineInputBorder(),
