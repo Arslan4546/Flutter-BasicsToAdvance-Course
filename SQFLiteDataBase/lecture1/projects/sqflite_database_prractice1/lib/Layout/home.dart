@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sqflite_database_prractice1/DataBase/db_crud_service.dart';
+import 'package:sqflite_database_prractice1/Layout/home_components.dart';
 import 'package:sqflite_database_prractice1/Models/student_model.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -64,43 +65,32 @@ class _MyHomePageState extends State<MyHomePage> {
               key: _formKey,
               child: Column(
                 children: [
-                  TextFormField(
+                  TextFieldWidget(
                     controller: _nameController,
-                    decoration: const InputDecoration(
-                      labelText: 'Name',
-                      border: OutlineInputBorder(),
-                    ),
+                    labelText: "Name",
                     validator:
-                        (value) => value!.isEmpty ? 'Please enter name' : null,
+                        (value) => value!.isEmpty ? "Enter the name" : null,
                   ),
                   const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _rollNoController,
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                      labelText: 'Roll Number',
-                      border: OutlineInputBorder(),
-                    ),
+                  TextFieldWidget(
+                    controller: _nameController,
+                    labelText: "Email",
                     validator:
-                        (value) => value!.isEmpty ? 'Enter roll number' : null,
+                        (value) => value!.isEmpty ? "Enter the email" : null,
                   ),
                   const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _emailController,
-                    decoration: const InputDecoration(
-                      labelText: 'email',
-                      border: OutlineInputBorder(),
-                    ),
-                    validator: (value) => value!.isEmpty ? 'Enter email' : null,
+                  TextFieldWidget(
+                    controller: _nameController,
+                    labelText: "Roll No",
+                    validator:
+                        (value) => value!.isEmpty ? "Enter the rollNo" : null,
                   ),
                   const SizedBox(height: 16),
-                  TextFormField(
-                    controller: _phoneController,
-                    decoration: const InputDecoration(
-                      labelText: 'phone',
-                      border: OutlineInputBorder(),
-                    ),
-                    validator: (value) => value!.isEmpty ? 'Enter phone' : null,
+                  TextFieldWidget(
+                    controller: _nameController,
+                    labelText: "Phone No",
+                    validator:
+                        (value) => value!.isEmpty ? "Enter the Phone" : null,
                   ),
                   const SizedBox(height: 24),
                   ElevatedButton(
