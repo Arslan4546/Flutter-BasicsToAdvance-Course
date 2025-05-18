@@ -73,21 +73,21 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   const SizedBox(height: 16),
                   TextFieldWidget(
-                    controller: _nameController,
+                    controller: _emailController,
                     labelText: "Email",
                     validator:
                         (value) => value!.isEmpty ? "Enter the email" : null,
                   ),
                   const SizedBox(height: 16),
                   TextFieldWidget(
-                    controller: _nameController,
+                    controller: _rollNoController,
                     labelText: "Roll No",
                     validator:
                         (value) => value!.isEmpty ? "Enter the rollNo" : null,
                   ),
                   const SizedBox(height: 16),
                   TextFieldWidget(
-                    controller: _nameController,
+                    controller: _phoneController,
                     labelText: "Phone No",
                     validator:
                         (value) => value!.isEmpty ? "Enter the Phone" : null,
