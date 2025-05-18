@@ -15,6 +15,25 @@ class StudentModel {
     required this.cGPA,
   });
 
+  // Creating the table commands in this Student Model Class
+  // create the variables for the table name and column names
+
+  static const String tableName = 'Student';
+  static const String columnRollNo = 'RollNo';
+  static const String columnName = 'Name';
+  static const String columnEmail = 'Email';
+  static const String columnPhone = 'Phone';
+  static const String columnCGPA = 'CGPA';
+
+  // this is the commands for creating the table for the database
+  static const String createTableCommand =
+      "CREATE TABLE IF NOT EXISTS $tableName ("
+      "$columnRollNo INTEGER PRIMARY KEY AUTOINCREMENT, "
+      "$columnName TEXT NOT NULL, "
+      "$columnEmail TEXT NOT NULL, "
+      "$columnPhone TEXT NOT NULL, "
+      "$columnCGPA REAL NOT NULL)";
+
   StudentModel copyWith({
     int? rollNo,
     String? name,
