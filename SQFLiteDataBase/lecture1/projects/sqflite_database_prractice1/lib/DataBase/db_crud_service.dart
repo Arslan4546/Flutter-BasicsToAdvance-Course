@@ -1,14 +1,16 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_database_prractice1/db_service.dart';
-import 'package:sqflite_database_prractice1/student_model.dart';
+import 'package:sqflite_database_prractice1/DataBase/db_singleton.dart';
+import 'package:sqflite_database_prractice1/Models/student_model.dart';
 
 class DbCrud {
+  // this is the table name in the database
+  static const String dbName = "LMS";
   // getting dataBase Path
   Future<Database> get database async {
     var dbPath = await getDatabasesPath();
     return await openDatabase(
-      join(dbPath, DbService.dbName),
+      join(dbPath, dbName),
       onCreate: (db, version) => db.execute(StudentModel.createTableCommand),
     );
   }
@@ -49,6 +51,16 @@ class DbCrud {
     var db = await database;
     List<Map<String, dynamic>> students = await db.query(
       StudentModel.tableName,
+    );
+    return students.map((e) => StudentModel.fromMap(e)).toList();
+  }
+
+  // fetcing with rollno and  email
+  Future<List<StudentModel>> fetchWithRAndE() async {
+    var db = await database;
+    List<Map<String, dynamic>> students = await db.query(
+      StudentModel.tableName,
+      columns: [StudentModel.columnRollNo, StudentModel.columnEmail],
     );
     return students.map((e) => StudentModel.fromMap(e)).toList();
   }
