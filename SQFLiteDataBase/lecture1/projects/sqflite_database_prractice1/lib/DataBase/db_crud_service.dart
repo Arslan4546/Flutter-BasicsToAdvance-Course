@@ -1,6 +1,5 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite_database_prractice1/DataBase/db_singleton.dart';
 import 'package:sqflite_database_prractice1/Models/student_model.dart';
 
 class DbCrud {
