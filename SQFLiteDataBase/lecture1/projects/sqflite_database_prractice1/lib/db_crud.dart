@@ -32,4 +32,24 @@ class DbCrud {
     );
     return rowID > 0;
   }
+
+  // delete function
+  Future<bool> deleteStudent(int rollNo) async {
+    var db = await database;
+    int rowID = await db.delete(
+      StudentModel.tableName,
+      where: '${StudentModel.columnRollNo} = ?',
+      whereArgs: [rollNo],
+    );
+    return rowID > 0;
+  }
+
+  // fetching all student data
+  Future<List<StudentModel>> fetchAllStudents() async {
+    var db = await database;
+    List<Map<String, dynamic>> students = await db.query(
+      StudentModel.tableName,
+    );
+    return students.map((e) => StudentModel.fromMap(e)).toList();
+  }
 }
