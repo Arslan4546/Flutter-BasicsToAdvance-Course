@@ -24,6 +24,7 @@ class SignUpPage extends StatelessWidget {
           ),
     );
     if (backpress == true) {
+      // ignore: use_build_context_synchronously
       context.go(AppRoutes.homepage);
     }
     return false;

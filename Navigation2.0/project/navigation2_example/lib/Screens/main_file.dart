@@ -7,7 +7,7 @@ class MainFile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: ('Gouter'),
+      title: ('Go Router'),
       debugShowCheckedModeBanner: false,
       routerConfig: AppRouter().router,
     );
